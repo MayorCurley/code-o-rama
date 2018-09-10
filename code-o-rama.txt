@@ -1,0 +1,1006 @@
+********************************************
+**** document object model
+********************************************
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Position</th>
+      <th>BA</th>
+      <th>OPS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Mookie Betts</td>
+      <td>RF</td>
+      <td>.342</td>
+      <td>1.073</td>
+    </tr>
+    <tr>
+      <td>Andrew Benintendi</td>
+      <td>CF</td>
+      <td>.290</td>
+      <td>.852</td>
+    </tr>
+    <tr>
+      <td>J.D. Martinez</td>
+      <td>DH</td>
+      <td>.336</td>
+      <td>1.061</td>
+    </tr>
+    <tr>
+      <td>Xander Bogaerts</td>
+      <td>SS</td>
+      <td>.281</td>
+      <td>.868</td>
+    </tr>
+    <tr>
+      <td>Eduardo Nunez</td>
+      <td>3B</td>
+      <td>.264</td>
+      <td>.675</td>
+    </tr>
+    <tr>
+      <td>Brock Holt</td>
+      <td>1B</td>
+      <td>.264</td>
+      <td>.711</td>
+    </tr>
+    <tr>
+      <td>Ian Kinsler</td>
+      <td>2B</td>
+      <td>.320</td>
+      <td>.718</td>
+    </tr>
+    <tr>
+      <td>Sandy Leon</td>
+      <td>C</td>
+      <td>.197</td>
+      <td>.566</td>
+    </tr>
+    <tr>
+      <td>Jackie Bradley Jr.</td>
+      <td>CF</td>
+      <td>.231</td>
+      <td>.702</td>
+    </tr>
+  </tbody>
+</table>
+
+$(document).ready(function() {
+    var element = document.createElement('h1');
+    var textNode = document.createTextNode('Great Technology');
+    element.appendChild(textNode);
+    var body = document.getElementsByTagName('body')[0];
+    body.appendChild(element);
+	
+	element = document.createElement('p');
+	body.appendChild(element);
+	
+	element = document.createElement('h2');
+	textNode = document.createTextNode('Boston Red Sox');
+	element.appendChild(textNode);
+	body.appendChild(element);
+	
+	element = document.createElement('hr');
+	body.appendChild(element);
+});
+
+********************************************
+**** javascript/jquery
+********************************************
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Basic Function</title>
+    <!-- <link rel="stylesheet" href="css/c03.css" /> -->
+  </head>
+  <body>
+    <h1>TravelWorthy</h1>
+    <div id="message">Welcome to our site!</div>
+    <!-- <script src="js/basic-function.js"></script> -->
+  </body>
+</html>
+
+/* JavaScript & jQuery - Chapter 3: Functions, Methods & Programming */
+/* The book used a font called Eau Sans - the download examples use Open Sans */
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+body {
+  background-color: #fff;
+  background: url("http://www.javascriptbook.com/code/c03/images/travelworthy-backdrop.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;}
+
+h1 {
+  background: #1e1b1e url("http://www.javascriptbook.com/code/c03/images/travelworthy-logo.gif") no-repeat;
+  width: 230px;
+  height: 180px;
+  float: left;
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;}
+
+h2 {
+  margin: 1.75em 0 0 0;
+  color: #adffda; 
+  font-weight: normal;}
+
+h2 + p {
+  margin: 0.25em 0 0 0;}
+p + p {
+  margin: 0;}
+p + h2 {
+  margin: 10px 0 0 0;}
+
+/* message under the logo */
+
+#message {
+  float: left;
+  clear: left;
+  background-color: #ffb87a;
+  color: #1e1b1e;
+  width:170px;
+  padding: 18px 30px;
+  text-align: center;}
+
+/* black bar across the right hand side of the page */
+
+#info {
+  background-color: #1e1b1e;
+  color: #fff;
+  width: 200px;
+  padding: 0 15px;
+  text-align: center;
+  min-height: 100%;
+  position: absolute;
+  top: 0;
+  right: 15%;}
+
+/* details in the black bar */
+
+#hotelName {
+  text-transform: uppercase;
+  text-align: center; 
+  font-size: 120%;
+  margin-top: 10px;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff; 
+  padding: 10px 0;}
+
+#hotel1 {
+  margin-top: 1em; 
+  border-top: 1px solid #fff; 
+  padding-top: 1em;} 
+#hotel2 {
+  border-bottom: 1px solid #fff; 
+  padding-bottom: 1em;}
+
+#rooms {
+  font-size: 440%;
+  color: #ffb87a;
+  display: inline-block;
+  margin: 0;}
+
+#roomRate{
+  text-decoration: line-through;
+  display: inline-block;
+  float: left;
+  padding-top: 10px;}
+
+#specialRate {  
+  font-size: 440%;
+  color: #ffb87a;
+  display: inline-block;
+  padding: 10px 0 20px 0;
+  margin: 0;}
+
+#offerEnds {
+  text-transform: uppercase;
+  color: #ffb87a;
+  font-size: 75%;}
+
+.true, .false {
+  padding: 0 50px 0 50px;
+  line-height: 28px;
+  text-align: left;
+  background-image: url("http://www.javascriptbook.com/code/c03/images/check-cross.png");
+  background-position: 120px 0;
+  background-repeat: no-repeat;}
+
+.false {
+  background-position: 120px -28px;}
+
+/* footer */
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #adffda;}
+
+#footer p {
+  padding: 10px;
+  margin: 0;}
+
+.data {
+  padding: 10px;}
+  
+// Create a variable called msg to hold a new message
+var msg = 'Sign up to receive our newsletter for 10% off!';
+
+// Create a function to update the content of the element whose id attribute has a value of message
+function updateMessage() {
+  var el = document.getElementById('message');
+  el.textContent = msg;
+}
+
+// Call the function
+updateMessage();
+
+
+
+********************************************
+**** bootstrap
+********************************************
+
+<!-- 
+  Bootstrap docs: https://getbootstrap.com/docs
+-->
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      1 of 2
+    </div>
+    <div class="col">
+      2 of 2
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2 col-modified-green">
+      1 of 3
+    </div>
+    <div class="col-sm-6 col-modified-neutral">
+      2 of 3
+    </div>
+    <div class="col-sm-4 col-modified-blue">
+      3 of 3
+    </div>
+  </div>  
+</div>
+
+.row {
+  background: #f8f9fa;
+  margin-top: 20px;
+}
+
+.col {
+  border: solid 1px #6c757d;
+  padding: 10px;
+}
+
+.col-modified-neutral {
+  /* background: green; */
+  border: solid 1px #6c757d;
+  padding: 10px;
+}
+
+.col-modified-red {
+  background: red;
+  border: solid 1px #6c757d;
+  padding: 10px;
+}
+
+.col-modified-green {
+  background: green;
+  border: solid 1px #6c757d;
+  padding: 10px;
+}
+
+.col-modified-blue {
+  background: blue;
+  border: solid 1px #6c757d;
+  padding: 10px;
+}
+
+
+displayed in jsfiddle dev tools
+
+<html><head><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title></title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+
+      <script type="text/javascript" src="//code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="//stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+      <script type="text/javascript" src="//stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style type="text/css">
+    .row {
+  background: #f8f9fa;
+  margin-top: 20px;
+}
+
+.col {
+  border: solid 1px #6c757d;
+  padding: 10px;
+}
+
+.col-modified-neutral {
+  /* background: green; */
+  border: solid 1px #6c757d;
+  padding: 10px;
+}
+
+.col-modified-red {
+  background: red;
+  border: solid 1px #6c757d;
+  padding: 10px;
+}
+
+.col-modified-green {
+  background: green;
+  border: solid 1px #6c757d;
+  padding: 10px;
+}
+
+.col-modified-blue {
+  background: blue;
+  border: solid 1px #6c757d;
+  padding: 10px;
+}
+
+  </style>
+  <!-- TODO: Missing CoffeeScript 2 -->
+
+  <script type="text/javascript">
+
+
+    window.onload=function(){
+      
+
+
+    }
+
+</script>
+
+</head>
+<body>
+  <!-- 
+  Bootstrap docs: https://getbootstrap.com/docs
+-->
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      1 of 2
+    </div>
+    <div class="col">
+      2 of 2
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2 col-modified-green">
+      1 of 3
+    </div>
+    <div class="col-sm-6 col-modified-neutral">
+      2 of 3
+    </div>
+    <div class="col-sm-4 col-modified-blue">
+      3 of 3
+    </div>
+  </div>  
+</div>
+
+  
+  <script>
+    // tell the embed parent frame the height of the content
+    if (window.parent && window.parent.parent){
+      window.parent.parent.postMessage(["resultsFrame", {
+        height: document.body.getBoundingClientRect().height,
+        slug: ""
+      }], "*")
+    }
+  </script>
+
+
+</body></html>
+
+<!-- 
+  Bootstrap docs: https://getbootstrap.com/docs
+-->
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      1 of 2
+    </div>
+    <div class="col">
+      2 of 2<br/>
+      <button id="awesomeButton" type="button" class="btn btn-success" onclick="javascript:console.log('awesomeButton clicked')">Awesome Button</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2 col-modified-green">
+      Chris Sale
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Chris Sale Arm Rehab</div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-modified-neutral">
+      Mookie Betts
+    </div>
+    <div class="col-sm-4 col-modified-blue">
+      J.D. Martinez
+    </div>
+  </div>  
+</div>
+
+<!-- 
+  Bootstrap docs: https://getbootstrap.com/docs
+-->
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      1 of 2
+    </div>
+    <div class="col">
+      2 of 2<br/>
+      <button id="awesomeButton" type="button" class="btn btn-success" onclick="javascript:console.log('awesomeButton clicked')">Awesome Button</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-modified-green">
+      Chris Sale
+      <hr color="black"/>
+      <div class="progress">
+        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">Chris Sale Arm Rehab</div>
+        </div>
+        <br/><br/>
+        <table class="table table-striped" style="background: gold;">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+            </tr>
+            <tr>
+              <th scope="row"></th>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    <div class="col-sm-3 col-modified-neutral">
+      Mookie Betts
+    </div>
+    <div class="col-sm-3 col-modified-blue">
+      J.D. Martinez
+    </div>
+  </div>  
+</div>
+
+
+
+
+
+********************************************
+**** binary search tree
+********************************************
+
+/**
+ * The node that makes up the binary search tree.
+ *
+ * <p>This class makes use of the Composite design pattern.</p>
+ *
+ * @author John Curley
+ */
+public class BinarySearchTreeNode {
+  private String key;
+  private Object value;
+  private BinarySearchTreeNode leftNode, rightNode;
+  
+  public BinarySearchTreeNode(String key, Object value) {
+    this.key = key;
+    this.value = value;
+  }
+  
+  /**
+   *
+   */
+  public void put( String key, Object value )
+    {
+        if ( key.compareTo( this.key ) < 0 )         
+        {             
+            if ( leftNode != null )             
+            {                 
+                leftNode.put( key, value );             
+            }             
+            else             
+            {                 
+                leftNode = new BinarySearchTreeNode( key, value );             
+            }         
+        }         
+        else if ( key.compareTo( this.key ) > 0 )
+        {
+            if ( rightNode != null )
+            {
+                rightNode.put( key, value );
+            }
+            else
+            {
+                rightNode = new BinarySearchTreeNode( key, value );
+            }
+        }
+        else
+        {
+            // if node is already in tree (key), then update
+            this.value = value;
+        }
+    }
+
+    /**
+     * Find Node with given key and return it's value
+     *
+     * <p>If we want to make this class immutable, then make copy of returned node</p>
+     */
+    public Object get( String key )
+    {
+        if ( this.key.equals( key ) )
+        {
+            return value;
+        }
+
+        if ( key.compareTo( this.key ) < 0 )
+        {
+            return leftNode == null ? null : leftNode.get( key );
+        }
+        else
+        {
+            return rightNode == null ? null : rightNode.get( key );
+        }
+    }
+}
+
+/**
+ * Simple class that contains the root node of the Binary Search Tree.
+ * Utliizes recursion to traverse the tree.
+ *
+ * <p>NOTE: should we balance the tree for improved performance?</p>
+ *
+ * @author John Curley
+ * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html" target="_top">HashMap</a>
+ */
+public class BinarySearchTree
+{
+    private BinarySearchTreeNode root;
+
+  /**
+   * Add a node to the tree
+   */
+  public void put( String key, Object value )
+    {
+        if ( root == null )
+        {
+            root = new BinarySearchTreeNode( key, value );
+        }
+        else
+        {
+            root.put( key, value );
+        }
+    }
+
+  /** 
+   * Retrieve a node from the tree
+   */  
+  public Object get( String key )
+    {
+        return root == null ? null : root.get( key );
+    }
+}
+
+    BinarySearchTree tree = new BinarySearchTree();
+    tree.put( "Martinez", "J.D. Martinez" );
+    tree.put( "Betts", "Mookie Betts" );
+    tree.put( "Moreland", "Mitch Moreland" );
+    tree.put( "Bogarts", "Xander Bobarts" );
+    tree.put( "Sale", "Chris Sale" );
+    tree.put( "Price", "David Price" );
+    tree.put( "Benintendi", "Andrew Benintendi" );
+    tree.put( "Porcello", "Rick Porcello" );
+    
+    Object player = tree.get("Sale");
+    System.out.println("retrieved node: " + player);
+    
+********************************************
+**** gas station circuit car travel
+********************************************
+
+class CarTravel {
+    private static final boolean DEBUG = true; 
+    
+    /**
+     * Determine if a car can complete a circuit of gas stations
+     *
+     * <p>A car is given a starting point and data corresponding to the
+     * amount of gas that is available and how much it cost to travel to 
+     * each gas station along the circuit.  If your gas tank is able 
+     * to have enough gas to reach each station, return the index of the 
+     * gas station on the circuit.</p>
+     *
+     * @param gas     gas amount available at each station array
+     * @param cost    cost to the gas tank to travel to the next station on the circuit
+     * @return        the starting index of the gas station 
+     *                if circuit is successful, -1 otherwise
+     */
+    public int canCompleteCircuit(int[] gas, int[] cost) throws IllegalArgumentException {
+        int gasLength = gas.length;
+        int costLength = cost.length;
+        
+        int circuitIndex = 0;
+        int tankAmount = 0;
+        
+        if(gasLength != costLength) {
+            throw new IllegalArgumentException("gas array length must equal cost array length");
+        }
+        
+        for(int i = 0; i < gasLength; i++) {
+            tankAmount += gas[circuitIndex];
+            tankAmount -= cost[circuitIndex];
+            
+            if(DEBUG) {
+                System.out.format("circuitIndex=%d, gas=%d, cost=%d, tankAmount=%d%n", circuitIndex, 
+                    gas[circuitIndex], cost[circuitIndex], tankAmount);
+            }
+            
+            if(tankAmount < 0) {
+                circuitIndex = -1;
+                break;
+            }
+            
+            circuitIndex++;
+            if(circuitIndex >= gasLength) {
+                circuitIndex = 0;
+            }
+        }
+        
+        if(DEBUG) {
+            System.out.println("canCompleteCircuit() returning circuit index: " + circuitIndex);
+        }
+        
+        return circuitIndex;
+    }
+}
+
+    int gas[] = {1,2,3,4,5};
+    int cost[] = {3,4,5,1,2};
+    CarTravel carTravel = new CarTravel();
+    int circuitIndex = carTravel.canCompleteCircuit(gas, cost);
+    System.out.println("circuitIndex=" + circuitIndex);
+    
+class CarTravel {
+    private static final boolean DEBUG = true; 
+    
+    /**
+     * Determine if a car can complete a circuit of gas stations
+     *
+     * <p>A car is given a starting point and data corresponding to the
+     * amount of gas that is available and how much it cost to travel to 
+     * each gas station along the circuit.  If your gas tank is able 
+     * to have enough gas to reach each station, return the index of the 
+     * gas station on the circuit.</p>
+     *
+     * @param gas     gas amount available at each station array
+     * @param cost    cost to the gas tank to travel to the next station on the circuit
+     * @return        the starting index of the gas station 
+     *                if circuit is successful, -1 otherwise
+     */
+    public int canCompleteCircuit(int[] gas, int[] cost) throws IllegalArgumentException {
+        int gasLength = gas.length;
+        int costLength = cost.length;
+        
+        int circuitIndex = 0;
+        int tankAmount = 0;
+        
+        if(gasLength != costLength) {
+            throw new IllegalArgumentException("gas array length must equal cost array length");
+        }
+        
+        // iterate through circuit index starting points looking for successful route
+        for(int i = 0; i < gasLength; i++) {
+            circuitIndex = i;
+            tankAmount = 0;
+            
+            if(DEBUG) {
+                System.out.println("///////////////////////////////////////////////////////");
+                System.out.println("Starting point circuit index: " + circuitIndex);
+                System.out.println("///////////////////////////////////////////////////////");
+            }
+            
+            // drive the route
+            for(int j = 0; j < gasLength; j++) {
+                tankAmount += gas[circuitIndex];
+                tankAmount -= cost[circuitIndex];
+
+                if(DEBUG) {
+                    System.out.format("circuitIndex=%d, gas=%d, cost=%d, tankAmount=%d%n", circuitIndex, 
+                        gas[circuitIndex], cost[circuitIndex], tankAmount);
+                }
+
+                if(tankAmount < 0) {
+                    circuitIndex = -1;
+                    break;
+                }
+
+                circuitIndex++;
+                if(circuitIndex >= gasLength) {
+                    circuitIndex = 0;
+                }
+            }
+            
+            if(circuitIndex >= 0) {
+                break;
+            }
+        }
+        
+        if(DEBUG) {
+            System.out.println("canCompleteCircuit() returning circuit index: " + circuitIndex);
+        }
+        
+        return circuitIndex;
+    }
+}
+
+********************************************
+**** factorial
+********************************************
+
+public class Permutations {
+    /**
+     * Calculate the factorial of a number
+     *
+     * @param n    value to calculate factorial
+     * @return     result of factorial calculation
+     * @see <a href="https://en.wikipedia.org/wiki/Factorial">Factorial Page on Wikipedia</a>    
+     */
+    public long factorial(long n) {
+        long result;
+    
+        if(n > 1) {
+            result = n * factorial(n-1);
+        }
+        else {
+            result = 1;
+        }
+    
+        return result;
+    }
+}
+
+public class Permutations {
+    /**
+     * Calculate the factorial of a number
+     *
+     * @param n    value to calculate factorial
+     * @return     result of factorial calculation
+     * @see <a href="https://en.wikipedia.org/wiki/Factorial">Factorial Page on Wikipedia</a>    
+     */
+    public long factorial(long n) {
+        long result = 1;
+    
+        for(; n >= 0; n--) {
+            if(n > 1) {
+                result *= n;
+            }
+            else {
+                result *= 1;
+            }
+        }
+    
+        return result;
+    }
+}
+
+    long n = 5;
+    Permutations p = new Permutations();
+    long result = p.factorial(n);
+    System.out.println(n + " factorial = " + result);
+
+********************************************
+**** ng-view
+********************************************
+
+index.html
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="myApp" class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Mayor Curley AngularJS App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
+  <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="app.css">
+  <!-- <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script> -->
+  <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-3.6.0.min.js"></script>
+</head>
+<body ng-app="myApp">
+  <div ng-controller="playerController">
+  <ul class="menu">
+    <li><a href="#/batters">batters</a></li>
+    <li><a href="#/pitchers">pitchers</a></li>
+  </ul>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div ng-view></div>
+  
+  <hr/>
+
+  <div>App version: v<span app-version></span></div>
+  
+  <hr/>
+  
+  <div>
+    <input ng-model="name">
+    {{name}}
+  </div>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.14/angular-route.min.js"></script>
+  
+  <!-- <script src="bower_components/angular/angular.js"></script> -->
+  <!-- <script src="bower_components/angular-route/angular-route.js"></script> -->
+  <script src="app.js"></script>
+  <!-- <script src="view1/view1.js"></script> -->
+  <!-- <script src="view2/view2.js"></script> -->
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+</body>
+</html>
+
+app.js
+
+var app = angular.module('myApp', [
+  'ngRoute',
+  'myApp.version'
+]);
+
+app.controller('playerController', function($scope) {
+});
+
+app.controller('battersController', function($scope) {
+    $scope.msg = 'placeholder for batters statistics';
+});
+
+app.controller('pitchersController', function($scope) {
+    $scope.msg = 'placeholder for pitchers statistics';
+});
+
+app.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+  //$locationProvider.hashPrefix('!');
+
+  $routeProvider
+      .when('/', {
+          templateUrl: 'pages/batters.html',
+          controller: 'battersController'
+      })
+      .when('/batters', {
+          templateUrl: 'pages/batters.html',
+          controller: 'battersController'
+      })
+      .when('/pitchers', {
+          templateUrl: 'pages/pitchers.html',
+          controller: 'pitchersController'
+      })
+      .otherwise({redirectTo: '/'});
+}]);
+
+app.css
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+pages/batters.html
+
+<h2>Batters Page</h2>
+{{ msg }}
+
+pages/pitchers.html
+
+<h2>Pitchers Page</h2>
+{{ msg }}
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,59 @@
+********************************************
+**** random science
+********************************************
+
+********************************************
+**** sorting algorithms
+********************************************
+
+
+Time Complexities of all Sorting Algorithms
+
+Following is a quick revision sheet that you may refer at last minute
+
+ 
+Algorithm 	Time Complexity
+	  Best 	Average 	Worst 	
+Selection Sort 	Ω(n^2) 	θ(n^2) 	O(n^2)
+Bubble Sort 	Ω(n) 	θ(n^2) 	O(n^2)
+Insertion Sort 	Ω(n) 	θ(n^2) 	O(n^2)
+Heap Sort 	Ω(n log(n)) 	θ(n log(n)) 	O(n log(n))
+Quick Sort 	Ω(n log(n)) 	θ(n log(n)) 	O(n^2)
+Merge Sort 	Ω(n log(n)) 	θ(n log(n)) 	O(n log(n))
+Bucket Sort 	Ω(n+k) 	θ(n+k) 	O(n^2)
+Radix Sort 	Ω(nk) 	θ(nk) 	O(nk)
+
+Bucket Sort
+-----------
+
+Bucket sort, or bin sort, is a sorting algorithm that works by distributing the elements of an array 
+into a number of buckets. Each bucket is then sorted individually, either using a different 
+sorting algorithm, or by recursively applying the bucket sorting algorithm. It is a distribution sort, 
+a generalization of pigeonhole sort, and is a cousin of radix sort in the most-to-least significant 
+digit flavor. Bucket sort can be implemented with comparisons and therefore can also be considered 
+a comparison sort algorithm. The computational complexity estimates involve the number of buckets.
+
+Bucket sort works as follows:
+
+    Set up an array of initially empty "buckets".
+    Scatter: Go over the original array, putting each object in its bucket.
+    Sort each non-empty bucket.
+    Gather: Visit the buckets in order and put all elements back into the original array.
+	
+Example:
+
+elements = [29,25,3,49,9,37,21,43];
+// distribute elements in buckets
+// buckets are range of values (ex., 0-9, 10-19, 20-29, 30-39, 40-49)
+// sort buckets in parallel, now each bucket is sorted
+// merge buckets back together in one sorted list
+
+
+
+
+
+
+ 
+	
+
+	

@@ -1,0 +1,93 @@
+
+Scala
+-----
+
+object-oriented
+functional
+mixins
+higher-order functions
+currying
+compiled in to java byte code, runs on jvm
+traits
+    encapsulates method and field definitions, which can then be reused by mixing them into classes
+	set of methods that can be used to extend class functionality
+closures
+concurrency support
+web framework: lift, play, bowler
+variable type inference
+tuple
+scalac compiler
+function call-by-name
+    passes a code block to the function to be executed each time the function is called
+function
+    named arguments 
+    variable arguments
+	default parameter values
+	higher-order functions
+	nested functions
+	partially applied functions
+	
+
+
+
+Java
+----
+
+AngularJS
+---------
+
+$scope.$apply() - calls $scope.$digest() to check if any bindings have changed
+    usually called directly by angular
+$scope.$watch() -
+
+Python
+------
+
+Design Patterns
+---------------
+
+Abstract factory
+Builder
+Factory method
+Lazy initialization/Proxy
+Object pool
+Prototype
+Adapter/Wrapper
+Bridge
+Composite
+Decorator
+Facade
+Flyweight
+Front controller
+Module
+Proxy
+Chain of Responsibility
+Command
+Mediator
+Memento
+Observer,Publish/subscribe
+State
+Strategy
+Template method
+Visitor
+
+Spring
+------
+
+Dependency Injection
+Loosely coupled architecture
+
+Front-End
+---------
+
+Browser Dev Tools provide a look into the DOM and other key portions of web page.  
+Look at Network and Performance for key tabs in dev tools.
+
+Try online browser website speed test.
+
+Google PageSpeed Insights
+Pingdom Website Speed Test
+css Grid Layout
+    rows and columns
+
+
