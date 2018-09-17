@@ -6,12 +6,13 @@ Utils for manipulating dictionaries
 #import numpy as np
 import pandas as pd
 
+
 class OrderMapUtils:
     """Utilities for order map"""
 
     @classmethod
     def order_map_to_dataframe(cls, order_map):
-        """Order events list to DataFrame"""
+        """Order map to DataFrame"""
         
         index = cls.build_order_map_index(order_map)
         dk = list(order_map.keys())[0];
@@ -21,8 +22,29 @@ class OrderMapUtils:
         order_map_list = cls.order_map_list(order_map)
             
         return pd.DataFrame(order_map_list, index=index, columns=colnames)
-    
-    
+        
+        
+    @classmethod
+    def dataframe_to_order_map(cls, df, order_event_cls):
+        """DataFrame to order map"""
+        
+        order_map = {}
+        
+        idx_dict = df.to_dict(orient='index')
+        for key, val in idx_dict.items():
+            idx_split = key.split(",")
+            dk = idx_split[0]
+            pk = int(idx_split[1])
+            if dk not in order_map:
+                order_map[dk] = dict()
+            if pk not in order_map[dk]:
+                order_map[dk][pk] = list()
+            
+            order_map[dk][pk].append(val)
+        
+        return order_map
+        
+        
     @classmethod
     def order_events_to_dataframe(cls, event_list):
         """Order events list to DataFrame"""
