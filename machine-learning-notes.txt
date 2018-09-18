@@ -1,0 +1,1161 @@
+
+overfitting training set
+nth power of polynomial
+d = degree of polynomial
+linear equation, square equation, cubic equation
+5th order polynomial
+generalize hypothesis
+training set
+cv set
+test set
+data to fit parameters might work better on model
+    than other data sets
+model selection
+data subset (75/25, 70/30, 60/20/20)
+cross validation
+60% training set
+20% cross validation set
+20% test set
+run cross validation set through nth power model equations
+cross validation data selects the model
+diagnosing bias vs. variance
+high bias underfit data
+high variance overfit data
+goodness of fit
+learning curves
+clustering
+    k-means (k clusters)
+    agglomerative clustering, hierarchy of clusters
+k-folds
+k-means, k number of clusters
+linear regression
+    y = mx + b
+    coefficients weights
+linear algebra
+    matrices and vectors
+linear regression
+logistic regression
+    sigmoid function
+regularization
+    choose the regularization value lambda
+        to get an appropriate fit
+neural networks
+machine learning system design
+support vector machines
+    hyperplane
+unsupervised learning
+    clustering
+    k-means
+dimensionality reduction
+anomaly detection
+recommender systems
+large scale machine learning
+
+towardsdatascience.com
+    design patterns
+        layers
+        mvc, model-view-controller
+
+standard deviation
+    find vector mean value
+    for each vector value subtract the mean and square the result
+    find the mean value of the squared differences
+    take square root of the squared diff mean value
+    
+//////////////////////////////////////////////////////////////////////////////
+//
+//////////////////////////////////////////////////////////////////////////////
+
+Coursera Machine Learning Syllabus
+
+Intro
+
+Video: What is Machine Learning?
+Reading: What is Machine Learning?
+Video: Supervised Learning
+Reading: Supervised Learning
+Video: Unsupervised Learning
+Reading: Unsupervised Learning
+
+
+Linear Regression with One Variable
+
+Linear regression predicts a real-valued output based on an input value. We discuss the application of linear regression to housing price prediction, present the notion of a cost function, and introduce the gradient descent method for learning.
+
+    Video: Model Representation
+    Reading: Model Representation
+    Video: Cost Function
+    Reading: Cost Function
+    Video: Cost Function - Intuition I
+    Reading: Cost Function - Intuition I
+    Video: Cost Function - Intuition II
+    Reading: Cost Function - Intuition II
+    Video: Gradient Descent
+    Reading: Gradient Descent
+    Video: Gradient Descent Intuition
+    Reading: Gradient Descent Intuition
+    Video: Gradient Descent For Linear Regression
+    Reading: Gradient Descent For Linear Regression
+    Reading: Lecture Slides
+
+
+Linear Algebra Review
+This optional module provides a refresher on linear algebra concepts. Basic understanding of linear algebra is necessary for the rest of the course, especially as we begin to cover models with multiple variables.
+
+    Video: Matrices and Vectors
+    Reading: Matrices and Vectors
+    Video: Addition and Scalar Multiplication
+    Reading: Addition and Scalar Multiplication
+    Video: Matrix Vector Multiplication
+    Reading: Matrix Vector Multiplication
+    Video: Matrix Matrix Multiplication
+    Reading: Matrix Matrix Multiplication
+    Video: Matrix Multiplication Properties
+    Reading: Matrix Multiplication Properties
+    Video: Inverse and Transpose
+    Reading: Inverse and Transpose
+    Reading: Lecture Slides
+    Practice Quiz: Linear Algebra
+
+Linear Regression with Multiple Variables
+What if your input has more than one value? In this module, we show how linear regression can be extended to accommodate multiple input features. We also discuss best practices for implementing linear regression.
+8 videos, 16 readings
+
+    Reading: Setting Up Your Programming Assignment Environment
+    Reading: Accessing MATLAB Online and Uploading the Exercise Files
+    Reading: Installing Octave on Windows
+    Reading: Installing Octave on Mac OS X (10.10 Yosemite and 10.9 Mavericks and Later)
+    Reading: Installing Octave on Mac OS X (10.8 Mountain Lion and Earlier)
+    Reading: Installing Octave on GNU/Linux
+    Reading: More Octave/MATLAB resources
+    Video: Multiple Features
+    Reading: Multiple Features
+    Video: Gradient Descent for Multiple Variables
+    Reading: Gradient Descent For Multiple Variables
+    Video: Gradient Descent in Practice I - Feature Scaling
+    Reading: Gradient Descent in Practice I - Feature Scaling
+    Video: Gradient Descent in Practice II - Learning Rate
+    Reading: Gradient Descent in Practice II - Learning Rate
+    Video: Features and Polynomial Regression
+    Reading: Features and Polynomial Regression
+    Video: Normal Equation
+    Reading: Normal Equation
+    Video: Normal Equation Noninvertibility
+    Reading: Normal Equation Noninvertibility
+    Video: Working on and Submitting Programming Assignments
+    Reading: Programming tips from Mentors
+    Reading: Lecture Slides
+
+Octave/Matlab Tutorial
+This course includes programming assignments designed to help you understand how to implement the learning algorithms in practice. To complete the programming assignments, you will need to use Octave or MATLAB. This module introduces Octave/Matlab and shows you how to submit an assignment.
+6 videos, 1 reading
+
+    Video: Basic Operations
+    Video: Moving Data Around
+    Video: Computing on Data
+    Video: Plotting Data
+    Video: Control Statements: for, while, if statement
+    Video: Vectorization
+    Reading: Lecture Slides
+    Programming: Linear Regression
+
+Logistic Regression
+Logistic regression is a method for classifying data into discrete outcomes. For example, we might use logistic regression to classify an email as spam or not spam. In this module, we introduce the notion of classification, the cost function for logistic regression, and the application of logistic regression to multi-class classification.
+7 videos, 8 readings
+
+    Video: Classification
+    Reading: Classification
+    Video: Hypothesis Representation
+    Reading: Hypothesis Representation
+    Video: Decision Boundary
+    Reading: Decision Boundary
+    Video: Cost Function
+    Reading: Cost Function
+    Video: Simplified Cost Function and Gradient Descent
+    Reading: Simplified Cost Function and Gradient Descent
+    Video: Advanced Optimization
+    Reading: Advanced Optimization
+    Video: Multiclass Classification: One-vs-all
+    Reading: Multiclass Classification: One-vs-all
+    Reading: Lecture Slides
+
+Regularization
+Machine learning models need to generalize well to new examples that the model has not seen in practice. In this module, we introduce regularization, which helps prevent models from overfitting the training data.
+4 videos, 5 readings
+
+    Video: The Problem of Overfitting
+    Reading: The Problem of Overfitting
+    Video: Cost Function
+    Reading: Cost Function
+    Video: Regularized Linear Regression
+    Reading: Regularized Linear Regression
+    Video: Regularized Logistic Regression
+    Reading: Regularized Logistic Regression
+    Reading: Lecture Slides
+    Programming: Logistic Regression
+
+Neural Networks: Representation
+Neural networks is a model inspired by how the brain works. It is widely used today in many applications: when your phone interprets and understand your voice commands, it is likely that a neural network is helping to understand your speech; when you cash a check, the machines that automatically read the digits also use neural networks.
+7 videos, 6 readings
+
+    Video: Non-linear Hypotheses
+    Video: Neurons and the Brain
+    Video: Model Representation I
+    Reading: Model Representation I
+    Video: Model Representation II
+    Reading: Model Representation II
+    Video: Examples and Intuitions I
+    Reading: Examples and Intuitions I
+    Video: Examples and Intuitions II
+    Reading: Examples and Intuitions II
+    Video: Multiclass Classification
+    Reading: Multiclass Classification
+    Reading: Lecture Slides
+    Programming: Multi-class Classification and Neural Networks
+
+Neural Networks: Learning
+In this module, we introduce the backpropagation algorithm that is used to help learn parameters for a neural network. At the end of this module, you will be implementing your own neural network for digit recognition.
+8 videos, 8 readings
+
+    Video: Cost Function
+    Reading: Cost Function
+    Video: Backpropagation Algorithm
+    Reading: Backpropagation Algorithm
+    Video: Backpropagation Intuition
+    Reading: Backpropagation Intuition
+    Video: Implementation Note: Unrolling Parameters
+    Reading: Implementation Note: Unrolling Parameters
+    Video: Gradient Checking
+    Reading: Gradient Checking
+    Video: Random Initialization
+    Reading: Random Initialization
+    Video: Putting It Together
+    Reading: Putting It Together
+    Video: Autonomous Driving
+    Reading: Lecture Slides
+    Programming: Neural Network Learning
+
+Advice for Applying Machine Learning
+Applying machine learning in practice is not always straightforward. In this module, we share best practices for applying machine learning in practice, and discuss the best ways to evaluate performance of the learned models.
+7 videos, 7 readings
+
+    Video: Deciding What to Try Next
+    Video: Evaluating a Hypothesis
+    Reading: Evaluating a Hypothesis
+    Video: Model Selection and Train/Validation/Test Sets
+    Reading: Model Selection and Train/Validation/Test Sets
+    Video: Diagnosing Bias vs. Variance
+    Reading: Diagnosing Bias vs. Variance
+    Video: Regularization and Bias/Variance
+    Reading: Regularization and Bias/Variance
+    Video: Learning Curves
+    Reading: Learning Curves
+    Video: Deciding What to Do Next Revisited
+    Reading: Deciding What to do Next Revisited
+    Reading: Lecture Slides
+    Programming: Regularized Linear Regression and Bias/Variance
+
+Machine Learning System Design
+To optimize a machine learning algorithm, you’ll need to first understand where the biggest improvements can be made. In this module, we discuss how to understand the performance of a machine learning system with multiple parts, and also how to deal with skewed data.
+5 videos, 3 readings
+
+    Video: Prioritizing What to Work On
+    Reading: Prioritizing What to Work On
+    Video: Error Analysis
+    Reading: Error Analysis
+    Video: Error Metrics for Skewed Classes
+    Video: Trading Off Precision and Recall
+    Video: Data For Machine Learning
+    Reading: Lecture Slides
+
+Support Vector Machines
+Support vector machines, or SVMs, is a machine learning algorithm for classification. We introduce the idea and intuitions behind SVMs and discuss how to use it in practice.
+6 videos, 1 reading
+
+    Video: Optimization Objective
+    Video: Large Margin Intuition
+    Video: Mathematics Behind Large Margin Classification
+    Video: Kernels I
+    Video: Kernels II
+    Video: Using An SVM
+    Reading: Lecture Slides
+    Programming: Support Vector Machines
+
+Unsupervised Learning
+We use unsupervised learning to build models that help us understand our data better. We discuss the k-Means algorithm for clustering that enable us to learn groupings of unlabeled data points.
+5 videos, 1 reading
+
+    Video: Unsupervised Learning: Introduction
+    Video: K-Means Algorithm
+    Video: Optimization Objective
+    Video: Random Initialization
+    Video: Choosing the Number of Clusters
+    Reading: Lecture Slides
+
+Dimensionality Reduction
+In this module, we introduce Principal Components Analysis, and show how it can be used for data compression to speed up learning algorithms as well as for visualizations of complex datasets.
+7 videos, 1 reading
+
+    Video: Motivation I: Data Compression
+    Video: Motivation II: Visualization
+    Video: Principal Component Analysis Problem Formulation
+    Video: Principal Component Analysis Algorithm
+    Video: Reconstruction from Compressed Representation
+    Video: Choosing the Number of Principal Components
+    Video: Advice for Applying PCA
+    Reading: Lecture Slides
+    Programming: K-Means Clustering and PCA
+
+Anomaly Detection
+Given a large number of data points, we may sometimes want to figure out which ones vary significantly from the average. For example, in manufacturing, we may want to detect defects or anomalies. We show how a dataset can be modeled using a Gaussian distribution, and how the model can be used for anomaly detection.
+8 videos, 1 reading
+
+    Video: Problem Motivation
+    Video: Gaussian Distribution
+    Video: Algorithm
+    Video: Developing and Evaluating an Anomaly Detection System
+    Video: Anomaly Detection vs. Supervised Learning
+    Video: Choosing What Features to Use
+    Video: Multivariate Gaussian Distribution
+    Video: Anomaly Detection using the Multivariate Gaussian Distribution
+    Reading: Lecture Slides
+
+Recommender Systems
+When you buy a product online, most websites automatically recommend other products that you may like. Recommender systems look at patterns of activities between different users and different products to produce these recommendations. In this module, we introduce recommender algorithms such as the collaborative filtering algorithm and low-rank matrix factorization.
+Show less
+6 videos, 1 reading
+
+    Video: Problem Formulation
+    Video: Content Based Recommendations
+    Video: Collaborative Filtering
+    Video: Collaborative Filtering Algorithm
+    Video: Vectorization: Low Rank Matrix Factorization
+    Video: Implementational Detail: Mean Normalization
+    Reading: Lecture Slides
+    Programming: Anomaly Detection and Recommender Systems
+
+Large Scale Machine Learning
+Machine learning works best when there is an abundance of data to leverage for training. In this module, we discuss how to apply the machine learning algorithms with large datasets.
+6 videos, 1 reading
+
+    Video: Learning With Large Datasets
+    Video: Stochastic Gradient Descent
+    Video: Mini-Batch Gradient Descent
+    Video: Stochastic Gradient Descent Convergence
+    Video: Online Learning
+    Video: Map Reduce and Data Parallelism
+    Reading: Lecture Slides
+
+Application Example: Photo OCR
+Identifying and recognizing objects, words, and digits in an image is a challenging task. We discuss how a pipeline can be built to tackle this problem and how to analyze and improve the performance of such a system.
+5 videos, 1 reading
+
+    Video: Problem Description and Pipeline
+    Video: Sliding Windows
+    Video: Getting Lots of Data and Artificial Data
+    Video: Ceiling Analysis: What Part of the Pipeline to Work on Next
+    Reading: Lecture Slides
+    Video: Summary and Thank You
+
+
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//////////////////////////////////////////////////////////////////////////////
+
+What is Machine Learning?
+
+web search engines, data mining, click stream data, engineering
+
+Arthur Samuel wrote checkers program
+Tom Mitchell (1998), task T, experience E, performance P
+
+supervised learning
+unsupervised learning
+
+machine learning is a set of tools, know how to use these tools
+
+reduce correlated variables in vector input
+
+
+Supervised Learning
+
+example, predict housing prices in Portland, Oregon
+some predictive model choices
+    straight line through data
+    quadratic formula through data
+regression algorithm: predict continuous valued output
+classification algorithm: predict classes, discrete valued output
+
+
+Unsupervised Learning
+
+data has no labels
+clustering
+market segmentation when segments need discovery
+
+Linear Regression
+
+m number of training examples
+X input variable vector, features
+y target output
+
+>>> X = [[2104],[1416],[1534],[852]]
+>>> y = [460,232,315,178]
+>>> xy_zip_line = list(zip(X,y))
+>>> xy_zip_line
+[(2104, 460), (1416, 232), (1534, 315), (852, 178)]
+>>> lr = LinearRegression()
+>>> linreg_model = lr.fit(X,y)
+>>> linreg_model.predict([[950]])
+array([175.35527991])
+
+training set ----> algorithm ----> target output
+
+cost function
+    minimize difference between model predicted value and actual value
+    
+1/2m sum (f(X_features, y_target) - y_actual) ^ 2
+    
+>>> linreg_model.predict(X)
+array([440.33629982, 282.35801412, 309.45312707, 152.85255899])
+>>> y
+[460, 232, 315, 178]
+>>> model_p = [440.34, 282.36, 309.45, 152.85]
+>>> diff = [round((model_p[idx] - y[idx]),2) for idx in range(len(model_p))]
+>>> diff
+[-19.66, 50.36, -5.55, -25.15]
+>>> diff_squared = [ round((diff[idx]**2),2) for idx in range(len(model_p)) ]
+>>> diff_squared
+[386.52, 2536.13, 30.8, 632.52]
+
+cost function in this example
+    (1/2m)(440.34 - 460)^2 + (282.36 - 232)^2 + 
+        (309.45 - 315)^2 + (152.85 - 178)^2
+        
+    (1/(2*4))(386.52 + 2536.13 + 30.8 + 632.52)
+    
+    448.25
+    
+gradient descent
+    optimization algorithm for finding minimum of a function
+    used to tune parameters
+    
+    find minimum for parameters using alpha value (learning rate)
+        and derivative of cost function
+        
+    algorithm
+        param = param - (alpha * function derivative)
+        
+derivative slope of line tangent to a point
+
+if alpha is too small, gradient descent can be slow
+
+if alpha is too large, gradient descent can overshoot minimum
+
+        
+    
+
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+//////////////////////////////////////////////////////////////////////////////
+
+
+sklearn.preprocessing
+    PolynomialFeatures
+    StandardScaler
+
+
+sklearn.linear_model
+    DecisionTreeClassifier
+    DecisionTreeRegressor
+    LinearRegression
+    LogisticRegression
+    RandomForestClassifier
+    RandomForestRegressor
+
+sklearn.neighbors
+    NearestNeighbors
+
+sklearn.ensemble
+    AdaBoostClassifier
+    AdaBoostRegressor
+
+sklearn.svm
+    LinearSVC
+    SVC
+
+sklearn.cluster
+    KMeans
+
+Model predicts the target vector 
+
+from sklearn import linear_model, datasets
+logistic = linear_model.LogisticRegression()
+
+GridSearchCV()
+RandomizedSearchCV()
+
+>>> from sklearn.linear_model import LinearRegression
+>>> from sklearn.datasets import load_boston
+>>> boston = load_boston()
+>>> features = boston.data[:,0:2]
+>>> target = boston.target
+>>> # train a model that represents a linear relationship (y = mx + b) between the feature and target vector
+...
+>>> regression = LinearRegression()
+>>> model = regression.fit(features, target)
+
+>>> model.intercept_
+22.46681692105723
+>>> model.coef_
+array([-0.34977589,  0.11642402])
+>>> target[0:9]
+array([24. , 21.6, 34.7, 33.4, 36.2, 28.7, 22.9, 27.1, 16.5])
+
+>>> house_values = model.predict(features)
+
+>>> for val in house_values[0:9]:
+...     print(val * 1000)
+...
+24560.238723708437
+22457.264541581142
+22457.271537098888
+22455.494675592534
+22442.66489605453
+22456.37611082797
+23891.23547622156
+23871.55708481458
+23848.230530905385
+
+>>> for idx in range(0,9):
+...     print(str(idx) + ": " + str(house_values[idx] * 1000) + ", " + str(target[idx] * 1000))
+...
+0: 24560.238723708437, 24000.0
+1: 22457.264541581142, 21600.0
+2: 22457.271537098888, 34700.0
+3: 22455.494675592534, 33400.0
+4: 22442.66489605453, 36200.0
+5: 22456.37611082797, 28700.0
+6: 23891.23547622156, 22900.0
+7: 23871.55708481458, 27100.0
+8: 23848.230530905385, 16500.0
+
+
+
+
+>>> features.size
+1012
+>>> target.size
+506
+
+
+ 
+ 
+ 
+k-folds
+
+dataset
+    subset-1
+    subset-2
+    subset-3
+    subset-4
+    subset-5
+
+training data: subset-2, subset-3, subset-4, subset-5
+test data: subset-1
+
+training data: subset-1, subset-3, subset-4, subset-5
+test data: subset-2
+
+training data: subset-1, subset-2, subset-4, subset-5
+test data: subset-3
+
+training data: subset-1, subset-2, subset-3, subset-5
+test data: subset-4
+
+training data: subset-1, subset-2, subset-3, subset-4
+test data: subset-5
+
+ 
+ 
+Cross-validation, sometimes called rotation estimation,[1][2][3] or out-of-sample testing is any of various similar model validation techniques for assessing how the results of a statistical analysis will generalize to an independent data set. It is mainly used in settings where the goal is prediction, and one wants to estimate how accurately a predictive model will perform in practice. In a prediction problem, a model is usually given a dataset of known data on which training is run (training dataset), and a dataset of unknown data (or first seen data) against which the model is tested (called the validation dataset or testing set).[4] The goal of cross-validation is to test the model’s ability to predict new data that were not used in estimating it, in order to flag problems like overfitting[citation needed] and to give an insight on how the model will generalize to an independent dataset (i.e., an unknown dataset, for instance from a real problem).
+
+One round of cross-validation involves partitioning a sample of data into complementary subsets, performing the analysis on one subset (called the training set), and validating the analysis on the other subset (called the validation set or testing set). To reduce variability, in most methods multiple rounds of cross-validation are performed using different partitions, and the validation results are combined (e.g. averaged) over the rounds to give an estimate of the model’s predictive performance.
+
+ 
+ 
+training data
+test data
+observations - features and targets
+k-fold cross-validation
+    split data into k parts called folds
+    each time process is run different k data part is used as test set
+
+preprocess and train model
+scikit-learn pipeline package does preprocessing and training model
+
+Fitting a data model
+
+Let’s start with what a model is. A model is a description of a system, usually expressed as an equation of some kind. Let’s say we have some data – measurements of variables x and y. We think that in the future, we’ll have measurements of more x-like values, and we’d like to be able to predict those ys.
+
+It looks like you could draw a nice straight line through this cloud of points. That means that a linear model might be a good choice for this data. We’ve just done the first step in the model-fitting process: we’ve decided to use a line – a simple linear model.
+
+The process of picking the correct line for this model is called “fitting”. There are different ways to do this – least squares is possibly the most familiar one. You could also use the “wiggle a ruler around on paper” method, or the “draw lines in Powerpoint” method. We’ll skip the details of that step because the internet describes least-squares fairly well.
+
+That fitted line can be described with the equation y=mx+b. When we fit the model what we’re really doing is choosing the values for m and b – the slope and the intercept. The point of fitting the model is to find this equation – to find the values of m and b such that y=mx+b describes a line that fits our observed data well. In the case of the best fit model above, m is close to 1, and b is just a bit larger than 0.
+ 
+
+And why do we care about this? Well, that value of m can be really informative. If m is very large and positive, then a small change in the value of x predicts a tremendous positive change in the value of y. If m is small, then changes in x predict small changes in y. A large m implies that x may have a large effect on y, hence m is also sometimes called the effect size. It’s also sometimes called a coefficient.
+ 
+The principals of this model-fitting can be applied to linear models created on data with many more parameters – many dimensions. But they are fit in similar ways. We may not be able to draw multidimensional datasets in neat graphs but we can still apply least-squares to them!
+ 
+
+Testing for significance
+
+Now that we’ve fit a model and found values for m and b, we’d like to know something: does m really matter?
+
+For an independent data set, that is, the best-fit linear model could have the exact same values for m and b. But does the value of x make an accurate prediction of the value of y?
+
+That’s why many model-fitting tools return not only a slope for each parameter, but a p-value. This p-value is an indicator of whether that predictor (x) is actually useful in informing you about the state of the response variable (y).
+
+To assess whether a parameter is predictive, we remove the variable (x) and it’s coefficient (m) from the model. And then we see how good we are at predicting y with a model that doesn’t include them.
+In this case a model with no x means that we guess: we create a model where the prediction for y is always the same: the mean value of all of the observed values of y.
+
+We compare the predictions between these two models. If our model that includes x is much better at prediction, we assign a low p-value to that coefficient.
+
+We do this kind of testing for significance in many statistical settings, including one of my favorites: testing for differential expression of genes in RNA-Seq experiments. If a linear model that includes the expression level of gene A is better at predicting which group a sample comes from than a model without A, we decide that gene A is significantly differentially expressed.
+
+>>> from sklearn.linear_model import LinearRegression
+>>> ols = LinearRegression()
+>>> ols.fit(features_train, target_train)
+LinearRegression(copy_X=True, fit_intercept=True, n_jobs=1, normalize=False)
+>>> ols.score(features_test, target_test)
+0.6353620786674621
+
+Logistic regression
+Logistic regression model:- In statistics, the logistic model (or logit model) is a statistical model that is usually taken to apply to a binary dependent variable. In regression analysis, logistic regression or logit regression is estimating the parameters of a logistic model. More formally, a logistic model is one where the log-odds of the probability of an event is a linear combination of independent or predictor variables. The two possible dependent variable values are often labelled as "0" and "1", which represent outcomes such as pass/fail, win/lose, alive/dead or healthy/sick. The binary logistic regression model can be generalized to more than two levels of the dependent variable: categorical outputs with more than two values are modelled by multinomial logistic regression, and if the multiple categories are ordered, by ordinal logistic regression, for example the proportional odds ordinal logistic model.[1]
+Logistic regression was developed by statistician David Cox in 1958.[1][2] The binary logistic model is used to estimate the probability of a binary response based on one or more predictor (or independent) variables (features). It allows one to say that the presence of a risk factor increases the odds of a given outcome by a specific factor. The model itself simply models probability of output in terms of input, and does not perform statistical classification (it is not a classifier), though it can be used to make a classifier, for instance by choosing a cutoff value and classifying inputs with probability greater than the cutoff as one class, below the cutoff as the other. The coefficients are generally not computed by a closed-form expression, unlike linear least squares.
+
+k-nearest neighbors algorithm
+In pattern recognition, the k-nearest neighbors algorithm (k-NN) is a non-parametric method used for classification and regression.[1] In both cases, the input consists of the k closest training examples in the feature space. The output depends on whether k-NN is used for classification or regression:
+
+    In k-NN classification, the output is a class membership. An object is classified by a majority vote of its neighbors, with the object being assigned to the class most common among its k nearest neighbors (kis a positive integer, typically small). If k = 1, then the object is simply assigned to the class of that single nearest neighbor.
+
+    In k-NN regression, the output is the property value for the object. This value is the average of the values of its k nearest neighbors.
+
+k-NN is a type of instance-based learning, or lazy learning, where the function is only approximated locally and all computation is deferred until classification. The k-NN algorithm is among the simplest of all machine learning algorithms.
+Both for classification and regression, a useful technique can be used to assign weight to the contributions of the neighbors, so that the nearer neighbors contribute more to the average than the more distant ones. For example, a common weighting scheme consists in giving each neighbor a weight of 1/d, where d is the distance to the neighbor.[2]
+The neighbors are taken from a set of objects for which the class (for k-NN classification) or the object property value (for k-NN regression) is known. This can be thought of as the training set for the algorithm, though no explicit training step is required.
+
+NumPy (Numeric Python)
+
+
+
+SciPy(Scientific Python)
+
+
+
+training data
+test data
+independent data set
+
+input (x-vectors/labels/features) and target data ------> algorithm ----------> predictive model
+
+independent data set -----> predictive model ------> prediction
+
+compare prediction to actual and then get the accuracy of the model
+
+data munging
+
+k-folds (breaks input data in to subsets, uses subsets for training and test, gets average of operational runs)
+holdout (breaks input data in to 75/25 ratio, training to test)
+
+supervised, semi-supervised and unsupervised learning
+
+regression
+classification
+clustering
+
+supervised (training input has corresponding targets)
+semi-supervised (some targets are missing)
+unsupervised (data does not have targets, data mining, searching for patterns)
+
+machine learning algorithms: learn a target function that best maps input variables (X)
+    to an output variable (Y), Y = f(X)
+
+X ----> target function ----> Y
+
+input example
+
+[1,2,3,4,5,6,7,8,9,10]
+
+output/target example
+
+[1,4,9,16,25,36,49,64,81,100]
+
+target function
+
+f(X) == x^2
+
+X ----> x^2 ----> Y
+
+independent data set
+
+[42,47,59,19,23]
+
+independent data set output
+
+[1764, 2209, 3481, 361, 529]
+
+supervised learning/predictive modeling
+    search for the best function that maps input data to output results
+
+Linear Regression
+
+Logistic Regression
+
+Linear Discriminant Analysis (LDA)
+
+Classification and Regression Trees
+
+Naive Bayes
+
+K-Nearest Neighbors
+    k is the number of neighbors
+
+Learning Vector Quantization (LVQ)
+
+Support Vector Machines
+
+Bagging and Random Forest
+
+Boosting and AdaBoost
+
+Support Vector Machines.............................................
+SVM
+
+Hyperplane
+In geometry, a hyperplane is a subspace whose dimension is one less than that of its ambient space. If a space is 3-dimensional then its hyperplanes are the 2-dimensional planes, while if the space is 2-dimensional, its hyperplanes are the 1-dimensional lines. This notion can be used in any general space in which the concept of the dimension of a subspace is defined.
+In different settings, the objects which are hyperplanes may have different properties. For instance, a hyperplane of an n-dimensional affine space is a flat subset with dimension n − 1. By its nature, it separates the space into two half spaces. A hyperplane of an n-dimensional projective space does not have this property.
+
+support vector classifier (SVC)
+    linear classifier that maximizes the margins between the classes
+    SVC works well in high dimensions
+    SVC attempts to find the hyperplane 
+
+hyperplane is boundary deciding how new observations are classified
+
+
+Kernel Method
+In machine learning, kernel methods are a class of algorithms for pattern analysis, whose best known member is the support vector machine (SVM). The general task of pattern analysis is to find and study general types of relations (for example clusters, rankings, principal components, correlations, classifications) in datasets.
+
+
+Vector Space
+A vector space (also called a linear space) is a collection of objects called vectors, which may be added together and multiplied ("scaled") by numbers, called scalars. Scalars are often taken to be real numbers, but there are also vector spaces with scalar multiplication by complex numbers, rational numbers, or generally any field. The operations of vector addition and scalar multiplication must satisfy certain requirements, called axioms, listed below.
+
+Euclidean vectors are an example of a vector space. They represent physical quantities such as forces: any two forces (of the same type) can be added to yield a third, and the multiplication of a force vector by a real multiplier is another force vector. In the same vein, but in a more geometric sense, vectors representing displacements in the plane or in three-dimensional space also form vector spaces. Vectors in vector spaces do not necessarily have to be arrow-like objects as they appear in the mentioned examples: vectors are regarded as abstract mathematical objects with particular properties, which in some cases can be visualized as arrows.
+
+
+kernel linear/polynomial
+
+regression analysis is a set of statistical processes for estimating the relationship among variables
+
+
+support vectors make up the hyperplane which helps to break up data into classifications
+
+clustering
+    find patterns in the data, useful when missing target vectors
+
+clustering
+    K-Means
+        group observations into k groups
+    Meanshift
+    DBSCAN
+    Hierarchical Merging
+
+k-means clustering
+    k cluster center points are created at random locations
+    for observation
+        distance between observation and the k center points is calculated
+        observation is assigned to the cluster of the nearest center point
+    center points are moved to the means of their respective clusters
+
+k-means groups are balanced (have roughly the same number of observations)
+
+kmeans, k is number of clusters; k nearest neighbors, k is number of neighbors in neighborhood
+
+neural networks
+    observation feature values ----> network layers ----> target value
+    input layer
+    value weights
+    middle layers
+    target layer
+
+About this course: Machine learning is the science of getting computers to act without being explicitly programmed. In the past decade, machine learning has given us self-driving cars, practical speech recognition, effective web search, and a vastly improved understanding of the human genome. Machine learning is so pervasive today that you probably use it dozens of times a day without knowing it. Many researchers also think it is the best way to make progress towards human-level AI. In this class, you will learn about the most effective machine learning techniques, and gain practice implementing them and getting them to work for yourself. More importantly, you'll learn about not only the theoretical underpinnings of learning, but also gain the practical know-how needed to quickly and powerfully apply these techniques to new problems.
+
+Finally, you'll learn about some of Silicon Valley's best practices in innovation as it pertains to machine learning and AI. This course provides a broad introduction to machine learning, datamining, and statistical pattern recognition. Topics include: (i) Supervised learning (parametric/non-parametric algorithms, support vector machines, kernels, neural networks). (ii) Unsupervised learning (clustering, dimensionality reduction, recommender systems, deep learning). (iii) Best practices in machine learning (bias/variance theory; innovation process in machine learning and AI). The course will also draw from numerous case studies and applications, so that you'll also learn how to apply learning algorithms to building smart robots (perception, control), text understanding (web search, anti-spam), computer vision, medical informatics, audio, database mining, and other areas.
+
+Coursera Machine Learning Syllabus
+
+Intro
+
+Video: What is Machine Learning?
+Reading: What is Machine Learning?
+Video: Supervised Learning
+Reading: Supervised Learning
+Video: Unsupervised Learning
+Reading: Unsupervised Learning
+
+
+Linear Regression with One Variable
+
+Linear regression predicts a real-valued output based on an input value. We discuss the application of linear regression to housing price prediction, present the notion of a cost function, and introduce the gradient descent method for learning.
+
+    Video: Model Representation
+    Reading: Model Representation
+    Video: Cost Function
+    Reading: Cost Function
+    Video: Cost Function - Intuition I
+    Reading: Cost Function - Intuition I
+    Video: Cost Function - Intuition II
+    Reading: Cost Function - Intuition II
+    Video: Gradient Descent
+    Reading: Gradient Descent
+    Video: Gradient Descent Intuition
+    Reading: Gradient Descent Intuition
+    Video: Gradient Descent For Linear Regression
+    Reading: Gradient Descent For Linear Regression
+    Reading: Lecture Slides
+
+
+Linear Algebra Review
+This optional module provides a refresher on linear algebra concepts. Basic understanding of linear algebra is necessary for the rest of the course, especially as we begin to cover models with multiple variables.
+
+    Video: Matrices and Vectors
+    Reading: Matrices and Vectors
+    Video: Addition and Scalar Multiplication
+    Reading: Addition and Scalar Multiplication
+    Video: Matrix Vector Multiplication
+    Reading: Matrix Vector Multiplication
+    Video: Matrix Matrix Multiplication
+    Reading: Matrix Matrix Multiplication
+    Video: Matrix Multiplication Properties
+    Reading: Matrix Multiplication Properties
+    Video: Inverse and Transpose
+    Reading: Inverse and Transpose
+    Reading: Lecture Slides
+    Practice Quiz: Linear Algebra
+
+Linear Regression with Multiple Variables
+What if your input has more than one value? In this module, we show how linear regression can be extended to accommodate multiple input features. We also discuss best practices for implementing linear regression.
+8 videos, 16 readings
+
+    Reading: Setting Up Your Programming Assignment Environment
+    Reading: Accessing MATLAB Online and Uploading the Exercise Files
+    Reading: Installing Octave on Windows
+    Reading: Installing Octave on Mac OS X (10.10 Yosemite and 10.9 Mavericks and Later)
+    Reading: Installing Octave on Mac OS X (10.8 Mountain Lion and Earlier)
+    Reading: Installing Octave on GNU/Linux
+    Reading: More Octave/MATLAB resources
+    Video: Multiple Features
+    Reading: Multiple Features
+    Video: Gradient Descent for Multiple Variables
+    Reading: Gradient Descent For Multiple Variables
+    Video: Gradient Descent in Practice I - Feature Scaling
+    Reading: Gradient Descent in Practice I - Feature Scaling
+    Video: Gradient Descent in Practice II - Learning Rate
+    Reading: Gradient Descent in Practice II - Learning Rate
+    Video: Features and Polynomial Regression
+    Reading: Features and Polynomial Regression
+    Video: Normal Equation
+    Reading: Normal Equation
+    Video: Normal Equation Noninvertibility
+    Reading: Normal Equation Noninvertibility
+    Video: Working on and Submitting Programming Assignments
+    Reading: Programming tips from Mentors
+    Reading: Lecture Slides
+
+Octave/Matlab Tutorial
+This course includes programming assignments designed to help you understand how to implement the learning algorithms in practice. To complete the programming assignments, you will need to use Octave or MATLAB. This module introduces Octave/Matlab and shows you how to submit an assignment.
+6 videos, 1 reading
+
+    Video: Basic Operations
+    Video: Moving Data Around
+    Video: Computing on Data
+    Video: Plotting Data
+    Video: Control Statements: for, while, if statement
+    Video: Vectorization
+    Reading: Lecture Slides
+    Programming: Linear Regression
+
+Logistic Regression
+Logistic regression is a method for classifying data into discrete outcomes. For example, we might use logistic regression to classify an email as spam or not spam. In this module, we introduce the notion of classification, the cost function for logistic regression, and the application of logistic regression to multi-class classification.
+7 videos, 8 readings
+
+    Video: Classification
+    Reading: Classification
+    Video: Hypothesis Representation
+    Reading: Hypothesis Representation
+    Video: Decision Boundary
+    Reading: Decision Boundary
+    Video: Cost Function
+    Reading: Cost Function
+    Video: Simplified Cost Function and Gradient Descent
+    Reading: Simplified Cost Function and Gradient Descent
+    Video: Advanced Optimization
+    Reading: Advanced Optimization
+    Video: Multiclass Classification: One-vs-all
+    Reading: Multiclass Classification: One-vs-all
+    Reading: Lecture Slides
+
+Regularization
+Machine learning models need to generalize well to new examples that the model has not seen in practice. In this module, we introduce regularization, which helps prevent models from overfitting the training data.
+4 videos, 5 readings
+
+    Video: The Problem of Overfitting
+    Reading: The Problem of Overfitting
+    Video: Cost Function
+    Reading: Cost Function
+    Video: Regularized Linear Regression
+    Reading: Regularized Linear Regression
+    Video: Regularized Logistic Regression
+    Reading: Regularized Logistic Regression
+    Reading: Lecture Slides
+    Programming: Logistic Regression
+
+Neural Networks: Representation
+Neural networks is a model inspired by how the brain works. It is widely used today in many applications: when your phone interprets and understand your voice commands, it is likely that a neural network is helping to understand your speech; when you cash a check, the machines that automatically read the digits also use neural networks.
+7 videos, 6 readings
+
+    Video: Non-linear Hypotheses
+    Video: Neurons and the Brain
+    Video: Model Representation I
+    Reading: Model Representation I
+    Video: Model Representation II
+    Reading: Model Representation II
+    Video: Examples and Intuitions I
+    Reading: Examples and Intuitions I
+    Video: Examples and Intuitions II
+    Reading: Examples and Intuitions II
+    Video: Multiclass Classification
+    Reading: Multiclass Classification
+    Reading: Lecture Slides
+    Programming: Multi-class Classification and Neural Networks
+
+Neural Networks: Learning
+In this module, we introduce the backpropagation algorithm that is used to help learn parameters for a neural network. At the end of this module, you will be implementing your own neural network for digit recognition.
+8 videos, 8 readings
+
+    Video: Cost Function
+    Reading: Cost Function
+    Video: Backpropagation Algorithm
+    Reading: Backpropagation Algorithm
+    Video: Backpropagation Intuition
+    Reading: Backpropagation Intuition
+    Video: Implementation Note: Unrolling Parameters
+    Reading: Implementation Note: Unrolling Parameters
+    Video: Gradient Checking
+    Reading: Gradient Checking
+    Video: Random Initialization
+    Reading: Random Initialization
+    Video: Putting It Together
+    Reading: Putting It Together
+    Video: Autonomous Driving
+    Reading: Lecture Slides
+    Programming: Neural Network Learning
+
+Advice for Applying Machine Learning
+Applying machine learning in practice is not always straightforward. In this module, we share best practices for applying machine learning in practice, and discuss the best ways to evaluate performance of the learned models.
+7 videos, 7 readings
+
+    Video: Deciding What to Try Next
+    Video: Evaluating a Hypothesis
+    Reading: Evaluating a Hypothesis
+    Video: Model Selection and Train/Validation/Test Sets
+    Reading: Model Selection and Train/Validation/Test Sets
+    Video: Diagnosing Bias vs. Variance
+    Reading: Diagnosing Bias vs. Variance
+    Video: Regularization and Bias/Variance
+    Reading: Regularization and Bias/Variance
+    Video: Learning Curves
+    Reading: Learning Curves
+    Video: Deciding What to Do Next Revisited
+    Reading: Deciding What to do Next Revisited
+    Reading: Lecture Slides
+    Programming: Regularized Linear Regression and Bias/Variance
+
+Machine Learning System Design
+To optimize a machine learning algorithm, you’ll need to first understand where the biggest improvements can be made. In this module, we discuss how to understand the performance of a machine learning system with multiple parts, and also how to deal with skewed data.
+5 videos, 3 readings
+
+    Video: Prioritizing What to Work On
+    Reading: Prioritizing What to Work On
+    Video: Error Analysis
+    Reading: Error Analysis
+    Video: Error Metrics for Skewed Classes
+    Video: Trading Off Precision and Recall
+    Video: Data For Machine Learning
+    Reading: Lecture Slides
+
+Support Vector Machines
+Support vector machines, or SVMs, is a machine learning algorithm for classification. We introduce the idea and intuitions behind SVMs and discuss how to use it in practice.
+6 videos, 1 reading
+
+    Video: Optimization Objective
+    Video: Large Margin Intuition
+    Video: Mathematics Behind Large Margin Classification
+    Video: Kernels I
+    Video: Kernels II
+    Video: Using An SVM
+    Reading: Lecture Slides
+    Programming: Support Vector Machines
+
+Unsupervised Learning
+We use unsupervised learning to build models that help us understand our data better. We discuss the k-Means algorithm for clustering that enable us to learn groupings of unlabeled data points.
+5 videos, 1 reading
+
+    Video: Unsupervised Learning: Introduction
+    Video: K-Means Algorithm
+    Video: Optimization Objective
+    Video: Random Initialization
+    Video: Choosing the Number of Clusters
+    Reading: Lecture Slides
+
+Dimensionality Reduction
+In this module, we introduce Principal Components Analysis, and show how it can be used for data compression to speed up learning algorithms as well as for visualizations of complex datasets.
+7 videos, 1 reading
+
+    Video: Motivation I: Data Compression
+    Video: Motivation II: Visualization
+    Video: Principal Component Analysis Problem Formulation
+    Video: Principal Component Analysis Algorithm
+    Video: Reconstruction from Compressed Representation
+    Video: Choosing the Number of Principal Components
+    Video: Advice for Applying PCA
+    Reading: Lecture Slides
+    Programming: K-Means Clustering and PCA
+
+Anomaly Detection
+Given a large number of data points, we may sometimes want to figure out which ones vary significantly from the average. For example, in manufacturing, we may want to detect defects or anomalies. We show how a dataset can be modeled using a Gaussian distribution, and how the model can be used for anomaly detection.
+8 videos, 1 reading
+
+    Video: Problem Motivation
+    Video: Gaussian Distribution
+    Video: Algorithm
+    Video: Developing and Evaluating an Anomaly Detection System
+    Video: Anomaly Detection vs. Supervised Learning
+    Video: Choosing What Features to Use
+    Video: Multivariate Gaussian Distribution
+    Video: Anomaly Detection using the Multivariate Gaussian Distribution
+    Reading: Lecture Slides
+
+Recommender Systems
+When you buy a product online, most websites automatically recommend other products that you may like. Recommender systems look at patterns of activities between different users and different products to produce these recommendations. In this module, we introduce recommender algorithms such as the collaborative filtering algorithm and low-rank matrix factorization.
+Show less
+6 videos, 1 reading
+
+    Video: Problem Formulation
+    Video: Content Based Recommendations
+    Video: Collaborative Filtering
+    Video: Collaborative Filtering Algorithm
+    Video: Vectorization: Low Rank Matrix Factorization
+    Video: Implementational Detail: Mean Normalization
+    Reading: Lecture Slides
+    Programming: Anomaly Detection and Recommender Systems
+
+Large Scale Machine Learning
+Machine learning works best when there is an abundance of data to leverage for training. In this module, we discuss how to apply the machine learning algorithms with large datasets.
+6 videos, 1 reading
+
+    Video: Learning With Large Datasets
+    Video: Stochastic Gradient Descent
+    Video: Mini-Batch Gradient Descent
+    Video: Stochastic Gradient Descent Convergence
+    Video: Online Learning
+    Video: Map Reduce and Data Parallelism
+    Reading: Lecture Slides
+
+Application Example: Photo OCR
+Identifying and recognizing objects, words, and digits in an image is a challenging task. We discuss how a pipeline can be built to tackle this problem and how to analyze and improve the performance of such a system.
+5 videos, 1 reading
+
+    Video: Problem Description and Pipeline
+    Video: Sliding Windows
+    Video: Getting Lots of Data and Artificial Data
+    Video: Ceiling Analysis: What Part of the Pipeline to Work on Next
+    Reading: Lecture Slides
+    Video: Summary and Thank You
+
+
+overfitting training set
+nth power of polynomial
+d = degree of polynomial
+linear equation, square equation, cubic equation
+5th order polynomial
+generalize hypothesis
+training set
+cv set
+test set
+data to fit parameters might work better on model
+    than other data sets
+model selection
+data subset (75/25, 70/30, 60/20/20)
+cross validation
+60% training set
+20% cross validation set
+20% test set
+run cross validation set through nth power model equations
+cross validation data selects the model
+diagnosing bias vs. variance
+high bias underfit data
+high variance overfit data
+goodness of fit
+learning curves
+clustering
+    k-means (k clusters)
+    agglomerative clustering, hierarchy of clusters
+k-folds
+k-means, k number of clusters
+linear regression
+    y = mx + b
+    coefficients weights
+linear algebra
+    matrices and vectors
+linear regression
+logistic regression
+    sigmoid function
+regularization
+    choose the regularization value lambda
+        to get an appropriate fit
+neural networks
+machine learning system design
+support vector machines
+    hyperplane
+unsupervised learning
+    clustering
+    k-means
+dimensionality reduction
+anomaly detection
+recommender systems
+large scale machine learning
+
+towardsdatascience.com
+    design patterns
+        layers
+        mvc, model-view-controller
+
+standard deviation
+    find vector mean value
+    for each vector value subtract the mean and square the result
+    find the mean value of the squared differences
+    take square root of the squared diff mean value
+
+
+
+
+
