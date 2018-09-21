@@ -417,7 +417,7 @@ training set ----> algorithm ----> target output
 cost function
     minimize difference between model predicted value and actual value
     
-1/2m sum (f(X_features, y_target) - y_actual) ^ 2
+1/2m sum (f(X_features) - y_target) ^ 2
     
 >>> linreg_model.predict(X)
 array([440.33629982, 282.35801412, 309.45312707, 152.85255899])
@@ -455,8 +455,220 @@ if alpha is too small, gradient descent can be slow
 
 if alpha is too large, gradient descent can overshoot minimum
 
-        
+linear regression fits a straight line to the data
+
+batch gradient descent 
+    each step of batch gradient descent uses all the training examples
     
+Linear Algebra Review
+
+matrix rectangular array of numbers
+matrix vector multiplication
+    matrix rows equal vector size
+    multiply each matrix row element by vector value of same index
+        then add the values together
+        
+num_rows = np.size(np_mtx,0)
+num_cols = np.size(np_mtx,1)
+
+# matrix vector multiplication in python
+>>> np_mtx
+array([[ 1,  2,  1,  5],
+       [ 0,  3,  0,  4],
+       [-1, -2,  0,  0]])
+>>> np_vec
+array([1, 3, 2, 1])
+>>> mtx_vector_result = []
+>>> num_cols = np.size(np_mtx,1)
+>>> for i in range(len(np_mtx)):
+...     vals = []
+...     for j in range(num_cols):
+...         vals.append(np_mtx[i,j] * np_vec[j])
+...     mtx_vector_result.append(sum(vals))
+...
+>>> mtx_vector_result
+[14, 13, -7]
+
+>>> def mtx_vector_mult(mtx, vec):
+...     mtx_vector_result = []
+...     num_cols = np.size(mtx,1)
+...     for i in range(len(mtx)):
+...         vals = []
+...         for j in range(num_cols):
+...             vals.append(mtx[i,j] * vec[j])
+...         mtx_vector_result.append(sum(vals))
+...     return mtx_vector_result
+...
+
+>>> house_size_mtx = np.array([[1,2104],[1,1416],[1,1534],[1,852]])
+>>> house_size_vec = np.array([-40,.25])
+>>> mtx_vector_mult(house_size_mtx, house_size_vec)
+[486.0, 314.0, 343.5, 173.0]
+
+# transpose matrix
+>>> tasty
+matrix([[1, 2, 0],
+        [3, 5, 9]])
+>>> tasty.transpose()
+matrix([[1, 3],
+        [2, 5],
+        [0, 9]])
+        
+gradient descent helps to tune parameters
+    uses alpha (learning rate) and partial derivatives
+    
+feature scaling
+    
+scale features to make gradient descent more efficient
+
+mean normalization
+    (value - mean of values) / (scale value)
+    
+>>> house_X_mtx
+   Size  BRNum  FLNum  Age
+1  2104      5      1   45
+2  1416      3      2   40
+3  1534      3      2   30
+4   852      2      1   36
+>>> house_sz_scale = 2000
+>>> [ (x - np.mean(house_X_mtx['Size'])) / house_sz_scale for x in house_X_mtx['Size'] ]
+[0.31375, -0.03025, 0.02875, -0.31225]
+
+gradient descent minimize cost function
+    should converge
+    declare convergence by threshold
+        (example, 10^-3)
+
+if gradient descent is not working, try smaller alpha
+
+too many features, remove some or use regularization
+
+polynomial regression
+    nth power equation
+    
+there are algorithms to choose optimal quadratic equations
+    and other machine learning models
+
+m = number of training examples
+n = number of features
+    
+>>> house_X_mtx
+   Size  BRNum  FLNum  Age
+1  2104      5      1   45
+2  1416      3      2   40
+3  1534      3      2   30
+4   852      2      1   36
+
+>>> house_y_target
+array([460, 232, 315, 178])
+
+>>> np.dot( house_X_mtx.transpose(), house_X_mtx)
+array([[9510932,   21074,    8856,  228012],
+       [  21074,      47,      19,     507],
+       [   8856,      19,      10,     221],
+       [ 228012,     507,     221,    5821]], dtype=int64)
+
+>>> np.linalg.inv(np.dot( house_X_mtx.transpose(), house_X_mtx) )
+array([[ 6.43878340e-04, -2.86097524e-01, -1.23945771e-01,
+         4.40327647e-03],
+       [-2.86097524e-01,  1.27479879e+02,  5.51285590e+01,
+        -1.98969961e+00],
+       [-1.23945771e-01,  5.51285590e+01,  2.44892323e+01,
+        -8.76340244e-01],
+       [ 4.40327647e-03, -1.98969961e+00, -8.76340244e-01,
+         3.42637046e-02]])
+
+>>> np.dot( house_X_mtx.transpose(), house_y_target )
+array([1931218,    4297,    1732,   45838], dtype=int64)
+
+
+>>> np.dot( 
+    np.linalg.inv(np.dot(house_X_mtx.transpose(), house_X_mtx)), 
+    np.dot(house_X_mtx.transpose(), house_y_target) )
+array([   1.27168807, -456.83557783, -233.22016912,    6.7059192 ])
+
+gradient descent/normal equation
+
+gradient descent
+    need to choose alpha
+    many iterations
+    works well even when n (num of features) is large
+    
+normal equation
+    no need to choose alpha
+    don't need to iterate
+    need to compute inverse of X transpose * X
+    slow if n is very large
+    O(n^3)
+    
+>>> def calc_normal_equation(features_mtx, target_vec):
+...     """(X-transpose * X)^-1 * X-transpose * y"""
+...     return np.dot( np.linalg.inv(np.dot(features_mtx.transpose(), features_mtx)), 
+...         np.dot(features_mtx.transpose(), target_vec) )
+...
+
+Logistic Regression
+    sigmoid function binary classifier
+    
+Logistic function
+    g(z) = 1 / (1+e^-z)
+    
+g(z) == 0.5 at z = 0
+
+decision boundary
+    separates data into classes
+
+non-linear decision boundaries
+    sometimes take the form of the equation of circle or ellipse
+    
+fit parameters by minimizing cost function with gradient descent  
+
+optimization algorithms
+    gradient descent
+    conjugate gradient
+    BFGS
+    L-BFGS
+    
+complex optimization algorithms
+    no need to manually pick alpha
+    often faster than gradient descent    
+
+how to minimize cost function
+    take the derivative of the function and set it equal to zero
+    
+calculate gradient descent using python
+
+example function: (x+5)^2
+
+cur_x = 3 # The algorithm starts at x=3
+rate = 0.01 # Learning rate
+precision = 0.000001 #This tells us when to stop the algorithm
+previous_step_size = 1 #
+max_iters = 10000 # maximum number of iterations
+iters = 0 #iteration counter
+df = lambda x: 2*(x+5) #Gradient of our function
+
+while previous_step_size > precision and iters < max_iters:
+    prev_x = cur_x #Store current x value in prev_x
+    cur_x = cur_x - rate * df(prev_x) #Grad descent
+    previous_step_size = abs(cur_x - prev_x) #Change in x
+    iters = iters+1 #iteration count
+    print("Iteration",iters,"\nX value is",cur_x) #Print iterations
+    
+print("The local minimum occurs at", cur_x)
+
+logistic regression
+    can perform multiclass classification
+    
+email foldering
+    work friends family hobby
+    healthy cold flu
+    sunny cloudy rain snow
+    
+logistic regression multiclass classification
+    fit a model n-class times
+    
+
 
 
 
