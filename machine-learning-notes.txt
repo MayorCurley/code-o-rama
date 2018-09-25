@@ -657,6 +657,36 @@ while previous_step_size > precision and iters < max_iters:
     
 print("The local minimum occurs at", cur_x)
 
+def gradient_descent(x_start, alpha, precision, max_iters, deriv_func):
+    """Performs gradient descent to discover the cost function local min
+    
+    Params:
+    x_start - starting pos for x when performing gradient descent
+    alpha - learning rate of gradient descent calc
+    precision - how close do we want to get to local min before happy
+    max_iters - round, round, baby round, round like a record baby
+    deriv_func - derivative of the cost function, 
+        part of gradient descent operation
+    """
+    local_min = -99999.999
+    cur_x = x_start
+    previous_step_size = 1
+    iters = 0 # gradient descent iteration counter
+    while previous_step_size > precision and iters < max_iters:
+        prev_x = cur_x # store current x value in prev_x
+        cur_x = cur_x - alpha * deriv_func(prev_x) # grad descent on parameter
+        previous_step_size = abs(cur_x - prev_x) # change in x, moving to convergence
+        iters = iters + 1 #iteration count
+        print("Iteration",iters,"\nX value is",cur_x) # print iterations, primitive debugging
+    local_min = round(cur_x, 0)
+    print("The local minimum occurs at", local_min)
+    return local_min
+
+# example func is (x+5) ** 2
+# using chain rule, derivative of func is 2 * (x+5)
+# func params: starting pos, alpha (learning rate), precision, max iterations, deriv func
+gradient_descent(3, 0.01, 0.000001, 10000, lambda x: 2*(x+5))
+
 logistic regression
     can perform multiclass classification
     
@@ -668,9 +698,138 @@ email foldering
 logistic regression multiclass classification
     fit a model n-class times
     
+Regularization
+
+avoid underfitting or overfitting data
+want data to be able to generalize and work well on independent data set
+
+overfit high variance, underfit high bias
+
+gradient descent/normal equation
+
+may be using too many features
+
+X vector (features)
+theta vector (parameters)
+
+try model selection algorithms
+
+regularization can use small values for params
+    less prone to overfitting
+    
+minimizing cost function helps improve model accuracy in estimating 
+    relationship between X and y values
+    
+reduce variance without sacrificing any important data properties
+
+regularization is a form of regression
+
+shrinks coefficients to zero
+    avoids overfitting
+
+RSS = sum of observations, i to n (y-observation - coefficient0 -
+    sum of parameters/weights, j to p coefficient-j * x-parameter-ij)^2
+
+Ridge regression
+    shrinkage qty
+        lambda * sum of parameters/weights, j to p coefficient-j ^ 2
+        
+RSS + shrinkage qty
+
+sum of observations, i to n (y-observation - coefficient0 -
+    sum of parameters/weights, j to p coefficient-j * x-parameter-ij)^2 +
+        lambda * sum of parameters/weights, j to p coefficient-j ^ 2
+        
+Neural Networks
+
+avoid overfitting, large num of features and complex computations
+
+computer vision
+    computer sees image as a matrix of values
+        representing the image
+        
+50x50 pixel image
+    2500 pixels, n = 2500
+    
+if the matrix is based on rgb values,
+    a 50x50 matrix could have 7500 values (50x50x3)
+    
+neurons have inputs (X features) and output
+    neurons perform computation on the input
+    
+neural network computation can be represented as 
+    a sigmoid (logistic) activation function
+    
+g(z) = 1/(1+e^-z)
+
+input layer ----> layer 2 ----> layer 3 ----> layer 4 ----> output layer
+
+forward propagation vectorized implementation
+    X feature set
+    a activation set
+    z set
+    
+superscript of activation value is the layer number where the 
+    activation value resides
+    
+x0, x1, x2, xn ----> a0, a1, a2, an ----> z (output)
+
+each layer has its own parameters
+
+non-linear analysis/classification
+
+sigmoid function
+    f(0) = 0.5
+    f(-4.6) = 0.01
+    f(4.6) = 0.99
+
+Neural Networks were used to read postal codes on mail
+
+computer vision neural network example
+    multi-class: pedestrian, car, motorcycle, truck
+    output vector will have 4 elements
+
+>>> pedestrian_output = [
+... 1,
+... 0,
+... 0,
+... 0
+... ]
+>>> car_output = [
+... 0,
+... 1,
+... 0,
+... 0
+... ]
+>>> motorcycle_output = [
+... 0,
+... 0,
+... 1,
+... 0
+... ]
+>>> truck_output = [
+... 0,
+... 0,
+... 0,
+... 1
+... ]
+>>> vehicle_bits
+{'pedestrian': 1, 'car': 2, 'motorcycle': 4, 'truck': 8}
+
+Neural Network
+    L number of layers
+    K number of classes
+    
+input has a weight
+
+activation function 
+    sigmoid function
+    
+big commercial neural networks may have up to 500 million training samples
 
 
 
+    
 
 //////////////////////////////////////////////////////////////////////////////
 //
@@ -1366,6 +1525,687 @@ standard deviation
     for each vector value subtract the mean and square the result
     find the mean value of the squared differences
     take square root of the squared diff mean value
+
+Scikit
+TensorFlow
+Hadoop/Spark
+Python Module
+DeepLearning.ai
+Bagging
+    Ensemble
+Random Forests
+GBM Gradient Boosting Machines
+Support Vector Machine
+    Kernels
+Neural Networks
+80% of the work is data munging
+Stochastic
+Venture Capital (VCs)
+
+DraftKings scoring system
+
+Passing TD    +4 Pts
+25 Passing Yards    +1 Pt (0.04 Pts/Yards)
+300+ Yard Passing Game    +3 Pts
+Interception    -1 Pt
+Rushing TD    +6 Pts
+10 Rushing Yards    +1 Pt (0.1 Pts/Yards)
+100+ Yard Rushing Game    +3 Pts
+Receiving TD    +6 Pts
+10 Receiving Yards    +1 Pt (0.1 Pts/Yards)
+100+ Receiving Yard Game    +3 Pts
+Reception    +1 Pt
+
+>>> def qbPts(pass_yds, pass_td, pass_int, rush_td, rush_yds):
+...     pts = 0
+...     pts = pts + (pass_td * 4)
+...     if pass_yds >= 300:
+...         pts = pts + 3
+...     pts = pts + floor(pass_yds / 25)
+...     pts = pts - pass_int
+...     pts = pts + (rush_td * 6)
+...     pts = pts + floor(rush_yds / 10)
+...     return pts
+...
+>>> patrick_mahomes_pts = qbPts(314, 3, 0, 0, 7)
+>>> patrick_mahomes_pts
+27
+
+>>> def rbPts(rush_yds, rush_td, recv_yds, recv_td, receptions):
+...     pts = 0
+...     pts = pts + floor(rush_yds / 10)
+...     if rush_yds >= 100:
+...         pts = pts + 3
+...     pts = pts + (rush_td * 6)
+...     pts = pts + floor(recv_yds / 10)
+...     if recv_yds >= 100:
+...         pts = pts + 3
+...     pts = pts + (recv_td * 6)
+...     pts = pts + receptions
+...     return pts
+...
+>>> todd_gurley_pts = rbPts(105, 1, 51, 0, 5)
+>>> todd_gurley_pts
+29
+
+TensorFlow
+
+tensor is a vector/matrix
+
+Scikit learn
+Python is slower, C++ is faster
+
+MNIST dataset
+
+60,000 training set examples
+10,000 test set examples
+images with 28x28 pixels
+
+input layer > weights > layer 2 activation function > weights >
+    layer 3 activation function > weights > output layer
+    
+compare output to intended output > cost function (cross entropy)
+    
+optimization function (optimizer) > minimize cost
+
+feedforward
+backpropagation
+
+setup the neural network model
+
+input layer has 784 pixels per image (28x28)
+output layer has 10 classes
+
+minimize cost improve model
+
+cross entropy
+stochastic gradient descent
+
+train data, reduce cost, improve accuracy
+
+stochastic gradient descent (sgd) optimizes a differentiable objective function
+    by randomly selecting samples (shuffling)
+    
+stochastic gradient descent is a method for improving model accuracy
+
+//////////////////////////////////////////////////////////////////////////////
+// python code
+//////////////////////////////////////////////////////////////////////////////
+
+from sklearn.linear_model import LinearRegression
+import numpy as np
+
+>>> batting_dtype = [
+... ('Player',np.unicode_),
+... ('Team',np.unicode_),
+... ('G',int),
+... ('PA',int),
+... ('AB',int),
+... ('HR',int),
+... ('AVG',float),
+... ('OBP',float),
+... ('SLG',float),
+... ('OPS',float),
+... ('OPS_PLUS',int),
+... ('WAR',float)
+... ]
+>>> redsox_batting = np.genfromtxt('redsox-batting-092118.txt',dtype=batting_dtype,skip_header=1,delimiter=',')
+
+import pandas as pd
+>>> redsox_bat_df = pd.read_csv('redsox-batting-092118.txt')
+>>> redsox_bat_df = redsox_bat_df.set_index(redsox_bat_df['Player'])
+                  Player Team    G   PA   AB  HR    AVG    OBP    SLG    OPS  OPS_PLUS  WAR
+Player
+Betts              Betts  BOS  131  593  502  30  0.339  0.432  0.625  1.057       182         10.2
+Martinez        Martinez  BOS  143  622  547  39  0.331  0.400  0.620  1.029       172          6.0
+Kinsler          Kinsler  BOS   31  114  107   1  0.271  0.307  0.336  0.643        75          0.0
+Pearce            Pearce  BOS   44  140  114   6  0.298  0.414  0.535  0.949       151          1.3
+Benintendi    Benintendi  BOS  142  630  552  16  0.286  0.362  0.466  0.828       122          3.9
+Bogaerts        Bogaerts  BOS  130  555  493  21  0.284  0.353  0.511  0.864       130          3.4
+Nunez              Nunez  BOS  125  494  473  10  0.264  0.288  0.389  0.677        81         -1.2
+Holt                Holt  BOS  104  345  302   6  0.258  0.345  0.358  0.703       104          1.2
+Moreland        Moreland  BOS  119  436  387  15  0.243  0.317  0.434  0.751       101          0.8
+Devers            Devers  BOS  104  458  422  18  0.242  0.297  0.422  0.719        92         -0.1
+Bradley Jr.  Bradley Jr.  BOS  126  507  449  13  0.232  0.312  0.403  0.715        92          2.1
+Swihart          Swihart  BOS   75  184  170   1  0.229  0.288  0.300  0.588        60         -0.2
+
+>>> X = redsox_bat_df[['SLG','OPS']]
+>>> X = X.set_index(redsox_bat_df['Player'])
+               SLG    OPS
+Player
+Betts        0.625  1.057
+Martinez     0.620  1.029
+Kinsler      0.336  0.643
+Pearce       0.535  0.949
+Benintendi   0.466  0.828
+Bogaerts     0.511  0.864
+Nunez        0.389  0.677
+Holt         0.358  0.703
+Moreland     0.434  0.751
+Devers       0.422  0.719
+Bradley Jr.  0.403  0.715
+Swihart      0.300  0.588
+
+>>> y = redsox_bat_df[['AVG']]
+>>> y = y.set_index(redsox_bat_df['Player'])
+               AVG
+Player
+Betts        0.339
+Martinez     0.331
+Kinsler      0.271
+Pearce       0.298
+Benintendi   0.286
+Bogaerts     0.284
+Nunez        0.264
+Holt         0.258
+Moreland     0.243
+Devers       0.242
+Bradley Jr.  0.232
+Swihart      0.229
+
+>>> model = regression.fit(X,y)
+>>> test_set
+array([[0.577, 0.968],
+       [0.456, 0.855],
+       [0.636, 1.096]])
+>>> p = model.predict(test_set)
+>>> p
+array([[0.30812398],
+       [0.29639237],
+       [0.34356058]])
+       
+>>> test_set_df = pd.DataFrame(test_set, columns=['SLG','OPS'], index=['Yelich','Altuve','Trout'])
+>>> test_set_df
+          SLG    OPS
+Yelich  0.577  0.968
+Altuve  0.456  0.855
+Trout   0.636  1.096
+            
+>>> test_set_df['AVG'] = [.322,.317,.316]
+>>> test_set_df
+          SLG    OPS    AVG
+Yelich  0.577  0.968  0.322
+Altuve  0.456  0.855  0.317
+Trout   0.636  1.096  0.316    
+
+>>> X = X.append(test_set_df[['SLG','OPS']])
+>>> X
+               SLG    OPS
+Betts        0.625  1.057
+Martinez     0.620  1.029
+Kinsler      0.336  0.643
+Pearce       0.535  0.949
+Benintendi   0.466  0.828
+Bogaerts     0.511  0.864
+Nunez        0.389  0.677
+Holt         0.358  0.703
+Moreland     0.434  0.751
+Devers       0.422  0.719
+Bradley Jr.  0.403  0.715
+Swihart      0.300  0.588
+Yelich       0.577  0.968
+Altuve       0.456  0.855
+Trout        0.636  1.096
+>>> y = y.append(test_set_df[['AVG']])
+>>> y
+               AVG
+Betts        0.339
+Martinez     0.331
+Kinsler      0.271
+Pearce       0.298
+Benintendi   0.286
+Bogaerts     0.284
+Nunez        0.264
+Holt         0.258
+Moreland     0.243
+Devers       0.242
+Bradley Jr.  0.232
+Swihart      0.229
+Yelich       0.322
+Altuve       0.317
+Trout        0.316
+
+>>> model = regression.fit(X,y)
+>>> model.predict([[.450,.836]])[0]
+array([0.29139216])
+
+scale features attempt improved accuracy
+
+>>> from sklearn.preprocessing import StandardScaler
+>>> scaler = StandardScaler()
+>>> X_standardized = scaler.fit_transform(X)
+>>> model = regression.fit(X_standardized,y)
+>>> model.predict([[.450,.836]])[0]
+array([0.32090764])
+
+improved, batting average of player is .314
+
+lots of noise, model is not that good
+
+>>> test_set_df['OBP'] = [.391,.388,.460]
+>>> test_set_df
+          SLG    OPS    AVG    OBP
+Yelich  0.577  0.968  0.322  0.391
+Altuve  0.456  0.855  0.317  0.388
+Trout   0.636  1.096  0.316  0.460
+
+>>> X = X.append(test_set_df[['OBP','OPS']])
+>>> X
+               OBP    OPS
+Betts        0.432  1.057
+Martinez     0.400  1.029
+Kinsler      0.307  0.643
+Pearce       0.414  0.949
+Benintendi   0.362  0.828
+Bogaerts     0.353  0.864
+Nunez        0.288  0.677
+Holt         0.345  0.703
+Moreland     0.317  0.751
+Devers       0.297  0.719
+Bradley Jr.  0.312  0.715
+Swihart      0.288  0.588
+Yelich       0.391  0.968
+Altuve       0.388  0.855
+Trout        0.460  1.096
+
+>>> regression = LinearRegression()
+>>> model = regression.fit(X,y)
+
+>>> model.predict([[.354,.874]])[0]
+array([0.28713072])
+
+player average is .297
+
+>>> scaler = StandardScaler()
+>>> X_std = scaler.fit_transform(X)
+>>> model = regression.fit(X_std,y)
+>>> model.predict([[.339,.753]])[0]
+array([0.30133933])
+
+player average is .303
+
+>>> X = redsox_bat_df[['OBP','SLG','OPS']]
+>>> X
+               OBP    SLG    OPS
+Player
+Betts        0.432  0.625  1.057
+Martinez     0.400  0.620  1.029
+Kinsler      0.307  0.336  0.643
+Pearce       0.414  0.535  0.949
+Benintendi   0.362  0.466  0.828
+Bogaerts     0.353  0.511  0.864
+Nunez        0.288  0.389  0.677
+Holt         0.345  0.358  0.703
+Moreland     0.317  0.434  0.751
+Devers       0.297  0.422  0.719
+Bradley Jr.  0.312  0.403  0.715
+Swihart      0.288  0.300  0.588
+
+>>> X = X.append(test_set_df[['OBP','SLG','OPS']])
+>>> X
+               OBP    SLG    OPS
+Betts        0.432  0.625  1.057
+Martinez     0.400  0.620  1.029
+Kinsler      0.307  0.336  0.643
+Pearce       0.414  0.535  0.949
+Benintendi   0.362  0.466  0.828
+Bogaerts     0.353  0.511  0.864
+Nunez        0.288  0.389  0.677
+Holt         0.345  0.358  0.703
+Moreland     0.317  0.434  0.751
+Devers       0.297  0.422  0.719
+Bradley Jr.  0.312  0.403  0.715
+Swihart      0.288  0.300  0.588
+Yelich       0.391  0.577  0.968
+Altuve       0.388  0.456  0.855
+Trout        0.460  0.636  1.096
+
+>>> import pandas as pd
+>>> import numpy as np
+>>> batting_leaders_df = pd.read_table('batting-leaders-092518.txt')
+>>> batting_leaders_df
+         Player Team Pos    G   AB    R    H  2B  3B  HR  RBI   BB   SO  SB  CS    AVG    OBP    SLG    OPS
+0         Betts  BOS  RF  133  513  125  176  46   5  32   80   78   90  29   6  0.343  0.434  0.639  1.073
+1      Martinez  BOS  LF  146  555  106  182  36   2  41  124   69  143   6   1  0.328  0.402  0.622  1.023
+2        Yelich  MIL  LF  141  557  109  179  34   6  32   98   58  130  21   4  0.321  0.391  0.576  0.967
+3        Altuve  HOU  2B  133  520   84  165  29   2  13   61   55   77  17   4  0.317  0.388  0.456  0.844
+4       Gennett  CIN  2B  151  571   85  180  30   2  23   92   42  123   4   2  0.315  0.363  0.496  0.859
+5         Trout  LAA  CF  135  459   98  144  24   4  38   77  117  121  24   2  0.314  0.459  0.632  1.091
+6          Cain  MIL  CF  135  513   85  160  24   2  10   37   69   88  29   7  0.312  0.400  0.425  0.825
+7       Zobrist  CHC  2B  133  431   64  134  27   2   9   57   53   58   3   4  0.311  0.383  0.445  0.829
+8       Freeman  ATL  1B  156  599   94  186  40   4  23   95   74  125  10   3  0.311  0.389  0.506  0.895
+9      Brantley  CLE  LF  138  554   86  171  35   2  17   75   46   55  11   3  0.309  0.363  0.471  0.834
+10       Rendon  WSH  3B  131  510   85  157  42   1  23   87   54   80   2   1  0.308  0.373  0.529  0.903
+11     Martinez  STL  1B  147  515   62  157  28   0  17   83   46  102   0   3  0.305  0.362  0.458  0.820
+12   Merrifield   KC  2B  152  606   86  184  42   3  12   58   59  109  38  10  0.304  0.368  0.442  0.810
+13       Segura  SEA  SS  139  568   87  172  29   3   9   61   30   68  20  11  0.303  0.339  0.412  0.751
+14  Castellanos  DET  RF  151  597   83  180  45   5  22   86   47  145   2   1  0.302  0.357  0.504  0.862
+15     Markakis  ATL  RF  156  604   77  182  43   2  14   93   68   74   1   1  0.301  0.368  0.449  0.817
+16       Wendle   TB  2B  134  469   58  141  31   6   7   57   36   94  15   4  0.301  0.356  0.437  0.793
+17      Andujar  NYY  3B  143  547   78  163  43   2  25   85   24   94   2   1  0.298  0.330  0.521  0.851
+18        Smith   TB  CF  135  455   60  135  26   9   2   38   46   93  36  12  0.297  0.369  0.407  0.775
+19      Simmons  LAA  SS  142  540   66  160  26   5  11   74   33   42   9   2  0.296  0.340  0.424  0.764
+20      Machado  LAD  SS  156  608   82  180  34   2  37  104   69  103  14   2  0.296  0.367  0.541  0.908
+21      Peralta  ARI  LF  142  544   74  161  24   5  29   84   45  118   4   0  0.296  0.353  0.518  0.871
+22    Dickerson  PIT  LF  131  487   63  144  33   7  12   53   20   77   8   3  0.296  0.326  0.466  0.792
+23        Duffy   TB  3B  131  503   58  148  22   1   4   44   46   93  12   6  0.294  0.360  0.366  0.726
+24      Arenado  COL  3B  149  561   99  165  35   2  34  104   72  119   2   2  0.294  0.374  0.545  0.919
+25  Goldschmidt  ARI  1B  154  576   94  169  35   5  33   83   89  167   6   4  0.293  0.393  0.543  0.937
+26         Baez  CHC  2B  153  578   97  169  38   9  34  110   27  158  21   9  0.292  0.327  0.566  0.893
+27       Peraza  CIN  SS  152  611   84  177  31   4  13   56   29   72  23   6  0.290  0.328  0.417  0.746
+28      Gurriel  HOU  1B  132  522   69  151  33   1  13   85   23   61   5   1  0.289  0.323  0.431  0.754
+29        Story  COL  SS  150  574   82  166  42   5  33  102   43  165  26   6  0.289  0.344  0.552  0.896
+30      Rosario  MIN  LF  138  559   87  161  31   2  24   77   30  104   8   2  0.288  0.323  0.479  0.803
+31      Bregman  HOU  3B  153  580  103  167  51   1  30  101   93   80  10   4  0.288  0.395  0.534  0.930
+32     Blackmon  COL  CF  149  599  112  172  28   6  27   65   57  132  12   4  0.287  0.356  0.489  0.845
+33     Bogaerts  BOS  SS  133  503   68  144  43   3  21   96   53  100   8   2  0.286  0.357  0.509  0.866
+34   Benintendi  BOS  LF  145  565  100  161  39   6  16   84   71  104  21   3  0.285  0.363  0.460  0.823
+35      Haniger  SEA  RF  152  576   87  164  37   4  26   91   68  142   8   2  0.285  0.367  0.498  0.865
+36       Suarez  CIN  3B  138  510   76  145  22   2  32  101   63  137   1   1  0.284  0.369  0.524  0.893
+37         Kemp  LAD  LF  142  454   60  129  23   0  21   82   36  113   0   0  0.284  0.333  0.474  0.807
+38        Votto  CIN  1B  140  486   66  138  27   2  12   67  105   98   1   0  0.284  0.418  0.422  0.840
+39       Lindor  CLE  SS  152  634  124  178  42   2  36   89   67  105  23   9  0.281  0.355  0.524  0.879
+40     Realmuto  MIA   C  122  467   74  131  30   3  21   73   38  100   3   2  0.281  0.345  0.493  0.837
+41        Jones  BAL  CF  139  558   53  156  32   0  15   61   23   89   7   1  0.280  0.310  0.418  0.727
+42      Chapman  OAK  3B  141  533   98  149  42   6  24   68   56  142   1   2  0.280  0.357  0.516  0.873
+43     LeMahieu  COL  2B  121  505   86  141  32   2  15   59   36   79   6   5  0.279  0.326  0.440  0.766
+44       Castro  MIA  2B  151  582   76  162  31   2  12   54   47  122   6   3  0.278  0.329  0.400  0.729
+45        Rizzo  CHC  1B  146  540   69  150  26   1  24   96   68   80   6   4  0.278  0.375  0.463  0.838
+46        Ozuna  STL  LF  144  568   68  157  16   2  23   87   36  107   3   0  0.276  0.321  0.433  0.754
+47        Mauer  MIN  1B  120  457   55  126  25   1   6   46   47   83   0   0  0.276  0.344  0.374  0.718
+48        Marte  PIT  CF  139  537   76  148  27   5  19   69   29  107  33  14  0.276  0.321  0.451  0.771
+49      Ramirez  CLE  3B  151  555  104  152  37   4  38  103  103   76  33   6  0.274  0.392  0.560  0.952
+>>> batting_leaders_df = batting_leaders_df.set_index(batting_leaders_df['Player']
+... )
+>>> batting_leaders_df
+                  Player Team Pos    G   AB    R    H  2B  3B  ...    RBI   BB   SO  SB  CS    AVG    OBP    SLG    OPS
+Player                                                         ...
+Betts              Betts  BOS  RF  133  513  125  176  46   5  ...     80   78   90  29   6  0.343  0.434  0.639  1.073
+Martinez        Martinez  BOS  LF  146  555  106  182  36   2  ...    124   69  143   6   1  0.328  0.402  0.622  1.023
+Yelich            Yelich  MIL  LF  141  557  109  179  34   6  ...     98   58  130  21   4  0.321  0.391  0.576  0.967
+Altuve            Altuve  HOU  2B  133  520   84  165  29   2  ...     61   55   77  17   4  0.317  0.388  0.456  0.844
+Gennett          Gennett  CIN  2B  151  571   85  180  30   2  ...     92   42  123   4   2  0.315  0.363  0.496  0.859
+Trout              Trout  LAA  CF  135  459   98  144  24   4  ...     77  117  121  24   2  0.314  0.459  0.632  1.091
+Cain                Cain  MIL  CF  135  513   85  160  24   2  ...     37   69   88  29   7  0.312  0.400  0.425  0.825
+Zobrist          Zobrist  CHC  2B  133  431   64  134  27   2  ...     57   53   58   3   4  0.311  0.383  0.445  0.829
+Freeman          Freeman  ATL  1B  156  599   94  186  40   4  ...     95   74  125  10   3  0.311  0.389  0.506  0.895
+Brantley        Brantley  CLE  LF  138  554   86  171  35   2  ...     75   46   55  11   3  0.309  0.363  0.471  0.834
+Rendon            Rendon  WSH  3B  131  510   85  157  42   1  ...     87   54   80   2   1  0.308  0.373  0.529  0.903
+Martinez        Martinez  STL  1B  147  515   62  157  28   0  ...     83   46  102   0   3  0.305  0.362  0.458  0.820
+Merrifield    Merrifield   KC  2B  152  606   86  184  42   3  ...     58   59  109  38  10  0.304  0.368  0.442  0.810
+Segura            Segura  SEA  SS  139  568   87  172  29   3  ...     61   30   68  20  11  0.303  0.339  0.412  0.751
+Castellanos  Castellanos  DET  RF  151  597   83  180  45   5  ...     86   47  145   2   1  0.302  0.357  0.504  0.862
+Markakis        Markakis  ATL  RF  156  604   77  182  43   2  ...     93   68   74   1   1  0.301  0.368  0.449  0.817
+Wendle            Wendle   TB  2B  134  469   58  141  31   6  ...     57   36   94  15   4  0.301  0.356  0.437  0.793
+Andujar          Andujar  NYY  3B  143  547   78  163  43   2  ...     85   24   94   2   1  0.298  0.330  0.521  0.851
+Smith              Smith   TB  CF  135  455   60  135  26   9  ...     38   46   93  36  12  0.297  0.369  0.407  0.775
+Simmons          Simmons  LAA  SS  142  540   66  160  26   5  ...     74   33   42   9   2  0.296  0.340  0.424  0.764
+Machado          Machado  LAD  SS  156  608   82  180  34   2  ...    104   69  103  14   2  0.296  0.367  0.541  0.908
+Peralta          Peralta  ARI  LF  142  544   74  161  24   5  ...     84   45  118   4   0  0.296  0.353  0.518  0.871
+Dickerson      Dickerson  PIT  LF  131  487   63  144  33   7  ...     53   20   77   8   3  0.296  0.326  0.466  0.792
+Duffy              Duffy   TB  3B  131  503   58  148  22   1  ...     44   46   93  12   6  0.294  0.360  0.366  0.726
+Arenado          Arenado  COL  3B  149  561   99  165  35   2  ...    104   72  119   2   2  0.294  0.374  0.545  0.919
+Goldschmidt  Goldschmidt  ARI  1B  154  576   94  169  35   5  ...     83   89  167   6   4  0.293  0.393  0.543  0.937
+Baez                Baez  CHC  2B  153  578   97  169  38   9  ...    110   27  158  21   9  0.292  0.327  0.566  0.893
+Peraza            Peraza  CIN  SS  152  611   84  177  31   4  ...     56   29   72  23   6  0.290  0.328  0.417  0.746
+Gurriel          Gurriel  HOU  1B  132  522   69  151  33   1  ...     85   23   61   5   1  0.289  0.323  0.431  0.754
+Story              Story  COL  SS  150  574   82  166  42   5  ...    102   43  165  26   6  0.289  0.344  0.552  0.896
+Rosario          Rosario  MIN  LF  138  559   87  161  31   2  ...     77   30  104   8   2  0.288  0.323  0.479  0.803
+Bregman          Bregman  HOU  3B  153  580  103  167  51   1  ...    101   93   80  10   4  0.288  0.395  0.534  0.930
+Blackmon        Blackmon  COL  CF  149  599  112  172  28   6  ...     65   57  132  12   4  0.287  0.356  0.489  0.845
+Bogaerts        Bogaerts  BOS  SS  133  503   68  144  43   3  ...     96   53  100   8   2  0.286  0.357  0.509  0.866
+Benintendi    Benintendi  BOS  LF  145  565  100  161  39   6  ...     84   71  104  21   3  0.285  0.363  0.460  0.823
+Haniger          Haniger  SEA  RF  152  576   87  164  37   4  ...     91   68  142   8   2  0.285  0.367  0.498  0.865
+Suarez            Suarez  CIN  3B  138  510   76  145  22   2  ...    101   63  137   1   1  0.284  0.369  0.524  0.893
+Kemp                Kemp  LAD  LF  142  454   60  129  23   0  ...     82   36  113   0   0  0.284  0.333  0.474  0.807
+Votto              Votto  CIN  1B  140  486   66  138  27   2  ...     67  105   98   1   0  0.284  0.418  0.422  0.840
+Lindor            Lindor  CLE  SS  152  634  124  178  42   2  ...     89   67  105  23   9  0.281  0.355  0.524  0.879
+Realmuto        Realmuto  MIA   C  122  467   74  131  30   3  ...     73   38  100   3   2  0.281  0.345  0.493  0.837
+Jones              Jones  BAL  CF  139  558   53  156  32   0  ...     61   23   89   7   1  0.280  0.310  0.418  0.727
+Chapman          Chapman  OAK  3B  141  533   98  149  42   6  ...     68   56  142   1   2  0.280  0.357  0.516  0.873
+LeMahieu        LeMahieu  COL  2B  121  505   86  141  32   2  ...     59   36   79   6   5  0.279  0.326  0.440  0.766
+Castro            Castro  MIA  2B  151  582   76  162  31   2  ...     54   47  122   6   3  0.278  0.329  0.400  0.729
+Rizzo              Rizzo  CHC  1B  146  540   69  150  26   1  ...     96   68   80   6   4  0.278  0.375  0.463  0.838
+Ozuna              Ozuna  STL  LF  144  568   68  157  16   2  ...     87   36  107   3   0  0.276  0.321  0.433  0.754
+Mauer              Mauer  MIN  1B  120  457   55  126  25   1  ...     46   47   83   0   0  0.276  0.344  0.374  0.718
+Marte              Marte  PIT  CF  139  537   76  148  27   5  ...     69   29  107  33  14  0.276  0.321  0.451  0.771
+Ramirez          Ramirez  CLE  3B  151  555  104  152  37   4  ...    103  103   76  33   6  0.274  0.392  0.560  0.952
+
+[50 rows x 19 columns]
+
+>>> X = batting_leaders_df[['OBP']]
+>>> X
+               OBP
+Player
+Betts        0.434
+Martinez     0.402
+Yelich       0.391
+Altuve       0.388
+Gennett      0.363
+Trout        0.459
+Cain         0.400
+Zobrist      0.383
+Freeman      0.389
+Brantley     0.363
+Rendon       0.373
+Martinez     0.362
+Merrifield   0.368
+Segura       0.339
+Castellanos  0.357
+Markakis     0.368
+Wendle       0.356
+Andujar      0.330
+Smith        0.369
+Simmons      0.340
+Machado      0.367
+Peralta      0.353
+Dickerson    0.326
+Duffy        0.360
+Arenado      0.374
+Goldschmidt  0.393
+Baez         0.327
+Peraza       0.328
+Gurriel      0.323
+Story        0.344
+Rosario      0.323
+Bregman      0.395
+Blackmon     0.356
+Bogaerts     0.357
+Benintendi   0.363
+Haniger      0.367
+Suarez       0.369
+Kemp         0.333
+Votto        0.418
+Lindor       0.355
+Realmuto     0.345
+Jones        0.310
+Chapman      0.357
+LeMahieu     0.326
+Castro       0.329
+Rizzo        0.375
+Ozuna        0.321
+Mauer        0.344
+Marte        0.321
+Ramirez      0.392
+
+>>> X['BB_AB'] = round(batting_leaders_df.loc[:,'BB'] / batting_leaders_df.loc[:,'AB'],3)
+>>> X
+               OBP  BB_AB
+Player
+Betts        0.434  0.152
+Martinez     0.402  0.124
+Yelich       0.391  0.104
+Altuve       0.388  0.106
+Gennett      0.363  0.074
+Trout        0.459  0.255
+Cain         0.400  0.135
+Zobrist      0.383  0.123
+Freeman      0.389  0.124
+Brantley     0.363  0.083
+Rendon       0.373  0.106
+Martinez     0.362  0.089
+Merrifield   0.368  0.097
+Segura       0.339  0.053
+Castellanos  0.357  0.079
+Markakis     0.368  0.113
+Wendle       0.356  0.077
+Andujar      0.330  0.044
+Smith        0.369  0.101
+Simmons      0.340  0.061
+Machado      0.367  0.113
+Peralta      0.353  0.083
+Dickerson    0.326  0.041
+Duffy        0.360  0.091
+Arenado      0.374  0.128
+Goldschmidt  0.393  0.155
+Baez         0.327  0.047
+Peraza       0.328  0.047
+Gurriel      0.323  0.044
+Story        0.344  0.075
+Rosario      0.323  0.054
+Bregman      0.395  0.160
+Blackmon     0.356  0.095
+Bogaerts     0.357  0.105
+Benintendi   0.363  0.126
+Haniger      0.367  0.118
+Suarez       0.369  0.124
+Kemp         0.333  0.079
+Votto        0.418  0.216
+Lindor       0.355  0.106
+Realmuto     0.345  0.081
+Jones        0.310  0.041
+Chapman      0.357  0.105
+LeMahieu     0.326  0.071
+Castro       0.329  0.081
+Rizzo        0.375  0.126
+Ozuna        0.321  0.063
+Mauer        0.344  0.103
+Marte        0.321  0.054
+Ramirez      0.392  0.186
+
+>>> y = batting_leaders_df[['AVG']]
+>>> y
+               AVG
+Player
+Betts        0.343
+Martinez     0.328
+Yelich       0.321
+Altuve       0.317
+Gennett      0.315
+Trout        0.314
+Cain         0.312
+Zobrist      0.311
+Freeman      0.311
+Brantley     0.309
+Rendon       0.308
+Martinez     0.305
+Merrifield   0.304
+Segura       0.303
+Castellanos  0.302
+Markakis     0.301
+Wendle       0.301
+Andujar      0.298
+Smith        0.297
+Simmons      0.296
+Machado      0.296
+Peralta      0.296
+Dickerson    0.296
+Duffy        0.294
+Arenado      0.294
+Goldschmidt  0.293
+Baez         0.292
+Peraza       0.290
+Gurriel      0.289
+Story        0.289
+Rosario      0.288
+Bregman      0.288
+Blackmon     0.287
+Bogaerts     0.286
+Benintendi   0.285
+Haniger      0.285
+Suarez       0.284
+Kemp         0.284
+Votto        0.284
+Lindor       0.281
+Realmuto     0.281
+Jones        0.280
+Chapman      0.280
+LeMahieu     0.279
+Castro       0.278
+Rizzo        0.278
+Ozuna        0.276
+Mauer        0.276
+Marte        0.276
+Ramirez      0.274
+
+
+>>> from sklearn.linear_model import LinearRegression
+>>> regression = LinearRegression()
+>>> model = regression.fit(X, y)
+
+>>> redsox_batting_df = pd.read_table('redsox-batting-092518.txt')
+>>> redsox_batting_df = redsox_batting_df.set_index(redsox_batting_df['Player'])
+                  Player Team Pos    G   AB    R    H  2B  3B  ...    RBI  BB   SO  SB  CS    AVG    OBP    SLG    OPS
+Player                                                         ...
+Betts              Betts  BOS  RF  133  513  125  176  46   5  ...     80  78   90  29   6  0.343  0.434  0.639  1.073
+Martinez        Martinez  BOS  LF  146  555  106  182  36   2  ...    124  69  143   6   1  0.328  0.402  0.622  1.023
+Bogaerts        Bogaerts  BOS  SS  133  503   68  144  43   3  ...     96  53  100   8   2  0.286  0.357  0.509  0.866
+Benintendi    Benintendi  BOS  LF  145  565  100  161  39   6  ...     84  71  104  21   3  0.285  0.363  0.460  0.823
+Nunez              Nunez  BOS  2B  125  473   56  125  23   3  ...     44  15   69   7   2  0.264  0.288  0.389  0.677
+Bradley Jr.  Bradley Jr.  BOS  CF  141  462   74  107  31   4  ...     58  44  135  16   1  0.232  0.311  0.400  0.711
+
+[6 rows x 19 columns]
+
+>>> test_set_X = redsox_batting_df[['OBP']]
+>>> test_set_X = test_set_X.set_index(redsox_batting_df['Player'])
+               OBP
+Player
+Betts        0.434
+Martinez     0.402
+Bogaerts     0.357
+Benintendi   0.363
+Nunez        0.288
+Bradley Jr.  0.311
+
+>>> test_set_y = redsox_batting_df[['AVG']]
+>>> test_set_y
+               AVG
+Player
+Betts        0.343
+Martinez     0.328
+Bogaerts     0.286
+Benintendi   0.285
+Nunez        0.264
+Bradley Jr.  0.232
+
+training set, fit model, test set
+
+>>> p = model.predict(test_set_X)
+>>> [ print(p[idx]) for idx in range(len(p)) ]
+[0.34043838]
+[0.32350771]
+[0.28727735]
+[0.28084986]
+[0.25846742]
+[0.24449761]
+
+>>> [ print(" ", p[idx][0], test_set_y.iloc[idx][0], (p[idx][0] - test_set_y.iloc[idx][0])) 
+          for idx in range(len(test_set_y)) ]
+  0.34043838182134584 0.34299999999999997 -0.0025616181786541348
+  0.32350771412287177 0.32799999999999996 -0.004492285877128188
+  0.2872773485410336 0.28600000000000003 0.0012773485410335628
+  0.28084986480512175 0.285 -0.004150135194878224
+  0.25846742470403167 0.264 -0.005532575295968345
+  0.24449760808234283 0.23199999999999998 0.012497608082342848
+  
+
+
+
+
+
+
+
+
 
 
 
