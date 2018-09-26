@@ -997,7 +997,102 @@ pages/pitchers.html
 
 
 
+********************************************
+**** python matrix vector multiplication
+********************************************
 
+>>> def mtx_vector_mult(mtx, vec):
+...     mtx_vector_result = []
+...     num_cols = np.size(mtx,1)
+...     for i in range(len(mtx)):
+...         vals = []
+...         for j in range(num_cols):
+...             vals.append(mtx[i,j] * vec[j])
+...         mtx_vector_result.append(sum(vals))
+...     return mtx_vector_result
+...
+
+
+********************************************
+**** amazon web services
+********************************************
+
+Using Dynamic Registration and Dashboard
+    for Amazon EC2 Instances
+
+Amazon EC2
+Amazon S3
+Amazon Simple Notification Service
+Amazon Simple Queue Service
+
+web service that provides resizable compute capacity
+    in the cloud
+
+EC2 web service interface
+
+
+********************************************
+**** loading json web api
+********************************************
+
+<div>
+    <h2>Player Table</h2>
+    <div id="playertable"></div>
+    
+	<script>
+        var playertable = document.getElementById('playertable')
+        //var tablestr = "<table><thead><th>Name</th><th>Avg</th><th>OBP</th><th>Slg</th><th>OPS</th></thead><tbody>";
+        
+        fetchPlayer(605141, "Mookie Betts");
+        fetchPlayer(643217, "Andrew Benintendi");
+        fetchPlayer(502110, "J.D. Martinez");
+        fetchPlayer(593428, "Xander Bogaerts");
+        
+        function fetchPlayer(playerId, playerName) {
+            console.log("fetchPlayer(): " + playerId + ", " + playerName);
+            
+            url = "https://lookup-service-prod.mlb.com/json/named.sport_hitting_tm.bam?league_list_id=%27mlb%27&game_type=%27R%27&season=%272018%27&player_id=%27"
+                  + playerId + "%27";
+            fetch(url)
+                .then(response => response.json())
+                .then(json => {
+           
+            var pl_row = json.sport_hitting_tm.queryResults.row;
+            
+            var playerElement = document.createElement("p");
+            var pstats = 
+                        "" + playerName + " " +
+                        "AVG: " + pl_row.avg + " " +
+                        "OBP: " + pl_row.obp + " " +
+                        "SLG: " + pl_row.slg + " " +
+                        "OPS: " + pl_row.ops;
+            var node = document.createTextNode(pstats);
+            playerElement.appendChild(node);
+            
+            playertable.appendChild(playerElement);
+            
+            console.log(playerElement);
+            console.log(pstats);
+            console.log(node);
+            console.log(playertable);
+           
+            /*
+            tablestr += "<tr>" +
+                        "<td>" + "J.D. Martinez " + "</td>" +
+                        "<td>" + pl_row.avg + "</td>" +
+                        "<td>" + pl_row.obp + "</td>" +
+                        "<td>" + pl_row.slg + "</td>" +
+                        "<td>" + pl_row.ops + "</td>" +
+                        "</tr>";
+             
+            tablestr += "</tbody></table>";
+             
+            playertable.innerHTML = tablestr; 
+            */
+        })
+        }
+    </script>
+</div>
 
 
 
