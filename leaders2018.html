@@ -1,0 +1,248 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- link rel="icon" href="../../../../favicon.ico" -->
+
+    <title>2018 League Leaders</title>
+
+    <!-- Bootstrap core CSS -->
+    <!-- link href="../../dist/css/bootstrap.min.css" rel="stylesheet" -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+    body {
+        padding-top: 5rem;
+    }
+    .starter-template {
+        padding: 3rem 1.5rem;
+        text-align: center;
+    }
+    </style>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="http://www.ligerperformance.com">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" href="https://appac.github.io/mlb-data-api-docs/">MLB Data API</a>
+              <a class="dropdown-item" href="#">Another action</a>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+
+    <main role="main" class="container">
+
+      <div id="playertable_container" class="starter-template">
+        <h1>2018 League Leaders</h1>
+        <p class="lead">Here's some league leaders</p>
+        <h2 id="leaders">Batting League Leaders<h2>
+        <p class="lead">
+        Sort by: 
+        <select id="battingSortBy" onchange="reloadBattingLeaders()">
+            <option selected value="ops">OPS</option>
+            <option value="hr">HR</option>
+            <option value="rbi">RBI</option>
+            <option value="avg">AVG</option>
+            <option value="obp">OBP</option>
+            <option value="slg">SLG</option>
+        </select>
+        </p>
+        <div id="playertable" class="lead"></div>
+        <h2 id="leaders">Pitching League Leaders<h2>
+        <p class="lead">
+        Sort by: 
+        <select id="pitchingSortBy" onchange="reloadPitchingLeaders()">
+            <option selected value="era">ERA</option>
+            <option value="w">W</option>
+            <option value="whip">WHIP</option>
+            <option value="avg">AVG</option>
+            <option value="k_9">K9</option>
+        </select>
+        </p>
+        <div id="pitchertable" class="lead"></div>
+        <script>
+        var root = "https://lookup-service-prod.mlb.com/";
+        var service = "json/named.leader_hitting_repeater.bam";
+        var params = "?sport_code=%27mlb%27&results=%2720%27&game_type=%27R%27&season=%272018%27&sort_column=%27ops%27";
+        var pitchingService = "json/named.leader_pitching_repeater.bam";
+        var pitchingParams = "?sport_code=%27mlb%27&results=%2720%27&game_type=%27R%27&season=%272018%27&sort_column=%27era%27";
+        
+        var url = root + service + params;
+        var pitching_url = root + pitchingService + pitchingParams;
+        
+        // reset select options for batting/pitching
+        document.getElementById("battingSortBy").value = "ops";
+        document.getElementById("pitchingSortBy").value = "era";
+        
+        displayBattingLeaders(url);
+        displayPitchingLeaders(pitching_url);
+        
+        function displayBattingLeaders(url) {
+            //playertable.innerHTML = "";
+            
+            //displayProgressBar(playertable);
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(json => {
+                    
+            playertable.innerHTML = "";
+               
+            var pl_row = json.leader_hitting_repeater.leader_hitting_mux.queryResults.row;
+            var len = json.leader_hitting_repeater.leader_hitting_mux.queryResults.totalSize;
+                
+            for (var i = 0; i < len; i++) {
+                var p = document.createElement("p");
+                p.class = "lead";
+                var playerObj = pl_row[i];
+                var pinfo = 
+                        "" + playerObj.last_name + " " +
+                        playerObj.team_abbrev + " " +
+                        "OPS: " + playerObj.ops + " " +
+                        "2B: " + playerObj.d + " " +
+                        "3B: " + playerObj.t + " " +
+                        "HR: " + playerObj.hr + " " +
+                        "RBI: " + playerObj.rbi + " " +
+                        "BB: " + playerObj.bb + " " +
+                        "SB: " + playerObj.sb + " " +
+                        "AVG: " + playerObj.avg + " " +
+                        "OBP: " + playerObj.obp + " " +
+                        "SLG: " + playerObj.slg + " ";
+                var node = document.createTextNode(pinfo);
+                p.appendChild(node);
+                var link = document.createElement("a");
+                link.href = "http://m.mlb.com/player/" + playerObj.player_id;
+                link.text = "Stats";
+                link.target = "_blank";
+                p.appendChild(link);
+                playertable.appendChild(p);
+                }
+            })
+        }
+        
+        function displayPitchingLeaders(pitching_url) {
+            //pitchertable.innerHTML = "";
+            
+            //displayProgressBar(pitchertable);
+        
+            fetch(pitching_url)
+                .then(response => response.json())
+                .then(json => {
+            console.log('displayPitchingLeaders(): ' + pitching_url);
+            pitchertable.innerHTML = "";
+            
+            var pl_row = json.leader_pitching_repeater.leader_pitching_mux.queryResults.row;
+            var len = json.leader_pitching_repeater.leader_pitching_mux.queryResults.totalSize;
+                
+            for (var i = 0; i < len; i++) {
+                var p = document.createElement("p");
+                p.class = "lead";
+                var pitcherObj = pl_row[i];
+                var pinfo = 
+                    "" + pitcherObj.last_name + " " +
+                    pitcherObj.team_abbrev + " " +
+                    "W: " + pitcherObj.w + " " +
+                    "L: " + pitcherObj.l + " " +
+                    "ERA: " + pitcherObj.era + " " +
+                    "AVG: " + pitcherObj.avg + " " +
+                    "WHIP: " + pitcherObj.whip + " " +
+                    "K/9: " + pitcherObj.k_9 + " ";
+                var node = document.createTextNode(pinfo);
+                p.appendChild(node);
+                var link = document.createElement("a");
+                link.href = "http://m.mlb.com/player/" + pitcherObj.player_id;
+                link.text = "Stats";
+                link.target = "_blank";
+                p.appendChild(link);
+                pitchertable.appendChild(p);
+            }
+            })
+        }
+        
+        function reloadBattingLeaders() {
+            console.log('reloadBattingLeaders() start');
+            var paramTemplate = "?sport_code='mlb'&results='20'&game_type='R'&season='2018'&sort_column='{sort_by}'";
+            var sortByVal = document.getElementById("battingSortBy").value;
+            var reloadParams = paramTemplate.replace('{sort_by}', sortByVal);
+            console.log('reloadBattingLeaders(): ' + reloadParams);
+            
+            var reloadUrl = root + service + reloadParams;
+            console.log(reloadUrl);
+            displayBattingLeaders(reloadUrl);
+        }
+        
+        function reloadPitchingLeaders() {
+            console.log('reloadPitchingLeaders() start');
+            var paramTemplate = "?sport_code='mlb'&results='20'&game_type='R'&season='2018'&sort_column='{sort_by}'";
+            var sortByVal = document.getElementById("pitchingSortBy").value;
+            var reloadParams = paramTemplate.replace('{sort_by}', sortByVal);
+            console.log('reloadPitchingLeaders(): ' + reloadParams);
+            
+            var reloadUrl = root + pitchingService + reloadParams;
+            console.log(reloadUrl);
+            displayPitchingLeaders(reloadUrl);
+        }
+        
+        function displayProgressBar(tablename) {
+            var id = "dynamic_" + tablename.id;
+        
+            tablename.innerHTML = 
+                '<div id="' + id + '" class="progress">' +
+                '    <div class="progress-bar progress-bar-striped bg-success" active" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>' +
+                '</div>';
+                
+            var current_progress = 0;
+            var interval = setInterval(function() {
+                console.log(id + ": " + current_progress);
+                current_progress += 20;
+                $("#" + id)
+                .css("width", current_progress + "%")
+                .attr("aria-valuenow", current_progress);
+                if (current_progress >= 100) {
+                    console.log(id + ": clearing interval");
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+        </script>
+      </div>
+
+    </main><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <!-- script src="../../assets/js/vendor/popper.min.js"></script -->
+    <!-- script src="../../dist/js/bootstrap.min.js"></script -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+  </body>
+</html>
