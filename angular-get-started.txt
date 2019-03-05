@@ -1,0 +1,16 @@
+
+npm install -g @angular/cli
+ng new <proj_name>
+ng serve
+
+angular has 
+    modules
+    components
+        html template and class
+    services
+    
+component is part of screen
+
+http://localhost:4200/
+
+    
