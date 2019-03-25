@@ -1,0 +1,14 @@
+orders test
+
+dirname = 'C:\\Users\\Mayor Curley\\projects\\prognos-trading\\logs'
+from orders import Orders, OrderEvent, OrderMapUtils
+import pandas as pd
+ord = Orders(dirname)
+query_str = "timestamp, event_id, event_primary_key, instrument_name, num_shares, price_hund_tick, trade_side, ask_ticks, bid_ticks where (instrument_name == '6ju8' & ask_ticks < 18040) | (instrument_name == 'DEN.G19.E' & ask_ticks > 18050)"
+df_test = ord.query(query_str)
+df_test
+import researchprof as rp
+rpo = rp.ResearchProfit()
+df_instrument = rpo.select_instrument(df_test, 'DEN.G19.E')
+rpo.sort_df_by_timestamp(df_instrument)
+result = rpo.calc_profit_loss(df_instrument)
