@@ -1,0 +1,119 @@
+
+Scott Martin: commodity trading is about being patient and prepared
+
+Have a trading plan
+Commidity
+Futures Contract
+Who trades futures and why
+Trading Office
+Futures broker
+Trading platform
+
+Gold, crude oil, corn
+Hedgers and speculators
+    Hedgers produce commodity and/or use the commodity in their business
+    
+Tomato futures contract example: 30 days sell tomatos for $7/box
+
+two participants agreed on price
+
+crude oil
+    derivative products -->
+    asphalt
+    lubricating oil
+    gas oil
+    jet fuel
+    gasoline
+    petrochemicals for plastics
+    
+forward, 3, 6, 12 month contracts, usually renegotiated after time period
+
+buyer/seller
+
+forward market
+    customized
+    high counterparty risk
+    no initial payment
+    unregulated
+    
+futures
+    standardized
+    low conterparty risk
+    initial payment
+    regulated
+    
+hedgers / speculators
+    speculators take risk off hedgers
+    
+futures contract
+    traded on futures exchange
+    
+futures broker provides access to futures market
+    investor/speculator -> broker -> market
+
+some brokers
+    
+https://www.ampfutures.com
+https://www.rjobrien.com
+https://ninjatrader.com
+
+electronic transactions
+
+lease of trading platform = $80/month
+
+markets
+    grain
+    gold
+    crude oil
+    livestock
+    currency
+
+trading platform and futures broker
+commonly used Charting Platform - Ninja Trading Platform
+futures broker transacts traded
+
+clearing broker (Ninja trader -> Dorman Trading)
+
+https://www.cmegroup.com
+Chicago Mercantile Exchange
+
+reading charts
+    head
+    shoulders
+    
+looking for patterns in trading
+
+head-shoulder patterns
+    has high point and two secondary high points to each side
+
+breaks through resistance and pulls back to support
+
+trading plan
+
+Futures do not trade in shares as stocks do, rather they trade in standardized 
+contracts. Each futures contract has a standard size that has been set by the 
+futures exchange on which it trades. As an example, the contract size for gold 
+futures is 100 troy ounces. That means when you buy 1 contract of gold futures, 
+you have control of 100 troy ounces of gold. If the price of gold were to move $1 
+higher, it would result in a profit of $100 ($1 x 100 ounces). A new trader needs to 
+become familiar with each commodity and futures contract since the quantity of 
+different futures varies.
+
+gold
+    contract standardized size = 100 troy ounces
+    
+delivery months contract months
+
+tick value = tick size * contract size
+
+crude oil
+    tick size = .01
+    contract size = 1000 barrels
+    tick value = .01 * 1000    
+
+cash price
+futures price
+basis = cash - futures
+
+producer uses futures to protect against lower prices
+
