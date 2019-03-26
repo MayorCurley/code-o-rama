@@ -13,4 +13,114 @@ component is part of screen
 
 http://localhost:4200/
 
+app.component.ts
+app.component.html
+
+ng generate component <component_name>
+
+decorator
+@Component({
+  selector:
+  templateUrl:
+  styleUrls:
+})
+
+app.module.ts
+
+@NgModule({
+    imports: [
+    ]
+})
+
+ng build --base-href=/tiger/
+
+ngModel
+
+[] property binding
+() event binding
+
+*****************************
+**** setup router scaffolding
+*****************************
+
+npm install -g @angular/cli
+ng new ngRouter
+ng g c home
+ng g c about
+ng g c dashboard
+
+So, our app.module.ts file looks like this.
+
+projects\javascript\angularjs\ngRouter\src\app
+
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+
+import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { appRoutes } from './routerConfig';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    AboutComponent,
+    DashboardComponent
+  ],
+  imports: [
+    BrowserModule, RouterModule.forRoot(appRoutes)
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+we need to configure the routes. So make one file inside app directory called routerConfig.ts file.
+
+// routerConfig.ts
+
+import { Routes } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
+import { AboutComponent } from './components/about/about.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
+export const appRoutes: Routes = [
+  { path: 'home', 
+    component: HomeComponent 
+  },
+  {
+    path: 'about',
+    component: AboutComponent
+  },
+  { path: 'dashboard',
+    component: DashboardComponent
+  }
+];
+export default appRoutes;
+
+<!-- app.component.html  -->
+
+<div style="text-align:center">
+  <h1>
+    Welcome to {{title}}!!
+  </h1>
+  <nav>
+    <a routerLink="home" routerLinkActive="active">Home</a>
+    <a routerLink="about">About</a>
+    <a routerLink="dashboard">Dashboard</a>
+  </nav>
+  <router-outlet></router-outlet>
+</div>
+
+ng serve --open
+
+
+
+
+
+
     
